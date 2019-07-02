@@ -1,0 +1,8 @@
+[35m[1mScanning dependencies of target waypoint_follower[0m
+[ 25%] [32mBuilding CXX object CMakeFiles/waypoint_follower.dir/src/waypoint_follower.cpp.o[0m
+[ 75%] Built target waypoint_generator
+[01m[K/home/lke/SK-Autopilot/src/sk_autopilot/src/waypoint_follower.cpp:31:20:[m[K [01;35m[Kwarning: [m[Knon-static data member initializers only available with -std=c++11 or -std=gnu++11
+     bool wp_pushed=false;
+[01;32m[K                    ^[m[K
+[100%] [32m[1mLinking CXX executable /home/lke/SK-Autopilot/devel/.private/sk_autopilot/lib/sk_autopilot/waypoint_follower[0m
+[100%] Built target waypoint_follower

@@ -1,0 +1,60 @@
+[01m[K/home/lke/SK-Autopilot/src/sk_autopilot/src/waypoint_follower.cpp:29:20:[m[K [01;35m[Kwarning: [m[Knon-static data member initializers only available with -std=c++11 or -std=gnu++11
+     bool wp_pushed=false;
+[01;32m[K                    ^[m[K
+[01m[K/home/lke/SK-Autopilot/src/sk_autopilot/src/waypoint_follower.cpp:[m[K In constructor '[01m[KWaypointFollower::WaypointFollower()[m[K':
+[01m[K/home/lke/SK-Autopilot/src/sk_autopilot/src/waypoint_follower.cpp:46:21:[m[K [01;31m[Kerror: [m[Kno match for '[01m[Koperator=[m[K' (operand types are '[01m[Kros::ServiceClient[m[K' and '[01m[Kros::Subscriber[m[K')
+         reached_sub = m_rosNodeHandler.subscribe
+[01;32m[K                     ^[m[K
+In file included from [01m[K/opt/ros/kinetic/include/ros/node_handle.h:35:0[m[K,
+                 from [01m[K/opt/ros/kinetic/include/ros/ros.h:45[m[K,
+                 from [01m[K/home/lke/SK-Autopilot/src/sk_autopilot/src/waypoint_follower.cpp:1[m[K:
+[01m[K/opt/ros/kinetic/include/ros/service_client.h:42:19:[m[K [01;36m[Knote: [m[Kcandidate: ros::ServiceClient& ros::ServiceClient::operator=(const ros::ServiceClient&)
+ class ROSCPP_DECL ServiceClient
+[01;32m[K                   ^[m[K
+[01m[K/opt/ros/kinetic/include/ros/service_client.h:42:19:[m[K [01;36m[Knote: [m[K  no known conversion for argument 1 from '[01m[Kros::Subscriber[m[K' to '[01m[Kconst ros::ServiceClient&[m[K'
+In file included from [01m[K/opt/ros/kinetic/include/ros/serialization.h:37:0[m[K,
+                 from [01m[K/opt/ros/kinetic/include/ros/publisher.h:34[m[K,
+                 from [01m[K/opt/ros/kinetic/include/ros/node_handle.h:32[m[K,
+                 from [01m[K/opt/ros/kinetic/include/ros/ros.h:45[m[K,
+                 from [01m[K/home/lke/SK-Autopilot/src/sk_autopilot/src/waypoint_follower.cpp:1[m[K:
+/opt/ros/kinetic/include/ros/message_traits.h: In instantiation of '[01m[Kstatic const char* ros::message_traits::MD5Sum<M>::value() [with M = boost::shared_ptr<const mavros_msgs::WaypointReached_<std::allocator<void> > >][m[K':
+[01m[K/opt/ros/kinetic/include/ros/message_traits.h:228:102:[m[K   required from '[01m[Kconst char* ros::message_traits::md5sum() [with M = boost::shared_ptr<const mavros_msgs::WaypointReached_<std::allocator<void> > >][m[K'
+[01m[K/opt/ros/kinetic/include/ros/subscribe_options.h:89:49:[m[K   required from '[01m[Kvoid ros::SubscribeOptions::initByFullCallbackType(const string&, uint32_t, const boost::function<void(P)>&, const boost::function<boost::shared_ptr<typename ros::ParameterAdapter<P>::Message>()>&) [with P = boost::shared_ptr<const mavros_msgs::WaypointReached_<std::allocator<void> > >&; std::__cxx11::string = std::__cxx11::basic_string<char>; uint32_t = unsigned int; typename ros::ParameterAdapter<P>::Message = boost::shared_ptr<const mavros_msgs::WaypointReached_<std::allocator<void> > >][m[K'
+[01m[K/opt/ros/kinetic/include/ros/node_handle.h:406:5:[m[K   required from '[01m[Kros::Subscriber ros::NodeHandle::subscribe(const string&, uint32_t, void (T::*)(M), T*, const ros::TransportHints&) [with M = boost::shared_ptr<const mavros_msgs::WaypointReached_<std::allocator<void> > >&; T = WaypointFollower; std::__cxx11::string = std::__cxx11::basic_string<char>; uint32_t = unsigned int][m[K'
+[01m[K/home/lke/SK-Autopilot/src/sk_autopilot/src/waypoint_follower.cpp:47:81:[m[K   required from here
+[01m[K/opt/ros/kinetic/include/ros/message_traits.h:121:28:[m[K [01;31m[Kerror: [m[K'[01m[K__s_getMD5Sum[m[K' is not a member of '[01m[Kboost::shared_ptr<const mavros_msgs::WaypointReached_<std::allocator<void> > >[m[K'
+     return M::__s_getMD5Sum().c_str();
+[01;32m[K                            ^[m[K
+/opt/ros/kinetic/include/ros/message_traits.h: In instantiation of '[01m[Kstatic const char* ros::message_traits::DataType<M>::value() [with M = boost::shared_ptr<const mavros_msgs::WaypointReached_<std::allocator<void> > >][m[K':
+[01m[K/opt/ros/kinetic/include/ros/message_traits.h:237:104:[m[K   required from '[01m[Kconst char* ros::message_traits::datatype() [with M = boost::shared_ptr<const mavros_msgs::WaypointReached_<std::allocator<void> > >][m[K'
+[01m[K/opt/ros/kinetic/include/ros/subscribe_options.h:90:53:[m[K   required from '[01m[Kvoid ros::SubscribeOptions::initByFullCallbackType(const string&, uint32_t, const boost::function<void(P)>&, const boost::function<boost::shared_ptr<typename ros::ParameterAdapter<P>::Message>()>&) [with P = boost::shared_ptr<const mavros_msgs::WaypointReached_<std::allocator<void> > >&; std::__cxx11::string = std::__cxx11::basic_string<char>; uint32_t = unsigned int; typename ros::ParameterAdapter<P>::Message = boost::shared_ptr<const mavros_msgs::WaypointReached_<std::allocator<void> > >][m[K'
+[01m[K/opt/ros/kinetic/include/ros/node_handle.h:406:5:[m[K   required from '[01m[Kros::Subscriber ros::NodeHandle::subscribe(const string&, uint32_t, void (T::*)(M), T*, const ros::TransportHints&) [with M = boost::shared_ptr<const mavros_msgs::WaypointReached_<std::allocator<void> > >&; T = WaypointFollower; std::__cxx11::string = std::__cxx11::basic_string<char>; uint32_t = unsigned int][m[K'
+[01m[K/home/lke/SK-Autopilot/src/sk_autopilot/src/waypoint_follower.cpp:47:81:[m[K   required from here
+[01m[K/opt/ros/kinetic/include/ros/message_traits.h:138:30:[m[K [01;31m[Kerror: [m[K'[01m[K__s_getDataType[m[K' is not a member of '[01m[Kboost::shared_ptr<const mavros_msgs::WaypointReached_<std::allocator<void> > >[m[K'
+     return M::__s_getDataType().c_str();
+[01;32m[K                              ^[m[K
+In file included from [01m[K/opt/ros/kinetic/include/ros/subscription_callback_helper.h:35:0[m[K,
+                 from [01m[K/opt/ros/kinetic/include/ros/subscriber.h:33[m[K,
+                 from [01m[K/opt/ros/kinetic/include/ros/node_handle.h:33[m[K,
+                 from [01m[K/opt/ros/kinetic/include/ros/ros.h:45[m[K,
+                 from [01m[K/home/lke/SK-Autopilot/src/sk_autopilot/src/waypoint_follower.cpp:1[m[K:
+/opt/ros/kinetic/include/ros/parameter_adapter.h: In instantiation of '[01m[Kstatic ros::ParameterAdapter<M>::Parameter ros::ParameterAdapter<M>::getParameter(const Event&) [with M = boost::shared_ptr<const mavros_msgs::WaypointReached_<std::allocator<void> > >&; ros::ParameterAdapter<M>::Parameter = boost::shared_ptr<const mavros_msgs::WaypointReached_<std::allocator<void> > >&; ros::ParameterAdapter<M>::Event = ros::MessageEvent<const boost::shared_ptr<const mavros_msgs::WaypointReached_<std::allocator<void> > > >; typename boost::remove_reference<typename boost::remove_const<M>::type>::type = boost::shared_ptr<const mavros_msgs::WaypointReached_<std::allocator<void> > >][m[K':
+[01m[K/opt/ros/kinetic/include/ros/subscription_callback_helper.h:144:48:[m[K   required from '[01m[Kvoid ros::SubscriptionCallbackHelperT<P, Enabled>::call(ros::SubscriptionCallbackHelperCallParams&) [with P = boost::shared_ptr<const mavros_msgs::WaypointReached_<std::allocator<void> > >&; Enabled = void][m[K'
+[01m[K/home/lke/SK-Autopilot/src/sk_autopilot/src/waypoint_follower.cpp:127:1:[m[K   required from here
+[01m[K/opt/ros/kinetic/include/ros/parameter_adapter.h:78:30:[m[K [01;31m[Kerror: [m[Kbinding '[01m[Kconst boost::shared_ptr<const mavros_msgs::WaypointReached_<std::allocator<void> > >[m[K' to reference of type '[01m[Kros::ParameterAdapter<boost::shared_ptr<const mavros_msgs::WaypointReached_<std::allocator<void> > >&>::Parameter {aka boost::shared_ptr<const mavros_msgs::WaypointReached_<std::allocator<void> > >&}[m[K' discards qualifiers
+     return *event.getMessage();
+[01;32m[K                              ^[m[K
+In file included from [01m[K/opt/ros/kinetic/include/ros/publisher.h:34:0[m[K,
+                 from [01m[K/opt/ros/kinetic/include/ros/node_handle.h:32[m[K,
+                 from [01m[K/opt/ros/kinetic/include/ros/ros.h:45[m[K,
+                 from [01m[K/home/lke/SK-Autopilot/src/sk_autopilot/src/waypoint_follower.cpp:1[m[K:
+/opt/ros/kinetic/include/ros/serialization.h: In instantiation of '[01m[Kstatic void ros::serialization::Serializer<T>::read(Stream&, typename boost::call_traits<T>::reference) [with Stream = ros::serialization::IStream; T = boost::shared_ptr<const mavros_msgs::WaypointReached_<std::allocator<void> > >; typename boost::call_traits<T>::reference = boost::shared_ptr<const mavros_msgs::WaypointReached_<std::allocator<void> > >&][m[K':
+[01m[K/opt/ros/kinetic/include/ros/serialization.h:163:22:[m[K   required from '[01m[Kvoid ros::serialization::deserialize(Stream&, T&) [with T = boost::shared_ptr<const mavros_msgs::WaypointReached_<std::allocator<void> > >; Stream = ros::serialization::IStream][m[K'
+[01m[K/opt/ros/kinetic/include/ros/subscription_callback_helper.h:136:21:[m[K   required from '[01m[Kros::VoidConstPtr ros::SubscriptionCallbackHelperT<P, Enabled>::deserialize(const ros::SubscriptionCallbackHelperDeserializeParams&) [with P = boost::shared_ptr<const mavros_msgs::WaypointReached_<std::allocator<void> > >&; Enabled = void; ros::VoidConstPtr = boost::shared_ptr<const void>][m[K'
+[01m[K/home/lke/SK-Autopilot/src/sk_autopilot/src/waypoint_follower.cpp:127:1:[m[K   required from here
+[01m[K/opt/ros/kinetic/include/ros/serialization.h:136:5:[m[K [01;31m[Kerror: [m[K'[01m[Kclass boost::shared_ptr<const mavros_msgs::WaypointReached_<std::allocator<void> > >[m[K' has no member named '[01m[Kdeserialize[m[K'
+     t.deserialize(stream.getData());
+[01;32m[K     ^[m[K
+make[2]: *** [CMakeFiles/waypoint_follower.dir/src/waypoint_follower.cpp.o] Error 1
+make[1]: *** [CMakeFiles/waypoint_follower.dir/all] Error 2
+make: *** [all] Error 2

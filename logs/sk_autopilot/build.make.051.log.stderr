@@ -1,0 +1,128 @@
+[01m[K/home/lke/SK-Autopilot/src/sk_autopilot/src/waypoint_follower.cpp:29:20:[m[K [01;35m[Kwarning: [m[Knon-static data member initializers only available with -std=c++11 or -std=gnu++11
+     bool wp_pushed=false;
+[01;32m[K                    ^[m[K
+[01m[K/home/lke/SK-Autopilot/src/sk_autopilot/src/waypoint_follower.cpp:[m[K In constructor '[01m[KWaypointFollower::WaypointFollower()[m[K':
+[01m[K/home/lke/SK-Autopilot/src/sk_autopilot/src/waypoint_follower.cpp:47:77:[m[K [01;31m[Kerror: [m[Kno matching function for call to '[01m[Kros::NodeHandle::subscribe(const char [23], void (WaypointFollower::*)(mavros_msgs::WaypointReached), WaypointFollower*)[m[K'
+                 ("mavros/mission/reached",&WaypointFollower::reached_cb,this);
+[01;32m[K                                                                             ^[m[K
+In file included from [01m[K/opt/ros/kinetic/include/ros/ros.h:45:0[m[K,
+                 from [01m[K/home/lke/SK-Autopilot/src/sk_autopilot/src/waypoint_follower.cpp:1[m[K:
+[01m[K/opt/ros/kinetic/include/ros/node_handle.h:402:14:[m[K [01;36m[Knote: [m[Kcandidate: template<class M, class T> ros::Subscriber ros::NodeHandle::subscribe(const string&, uint32_t, void (T::*)(M), T*, const ros::TransportHints&)
+   Subscriber subscribe(const std::string& topic, uint32_t queue_size, void(T::*fp)(M), T* obj, 
+[01;32m[K              ^[m[K
+[01m[K/opt/ros/kinetic/include/ros/node_handle.h:402:14:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/lke/SK-Autopilot/src/sk_autopilot/src/waypoint_follower.cpp:47:77:[m[K [01;36m[Knote: [m[K  cannot convert '[01m[K&WaypointFollower::reached_cb[m[K' (type '[01m[Kvoid (WaypointFollower::*)(mavros_msgs::WaypointReached) {aka void (WaypointFollower::*)(mavros_msgs::WaypointReached_<std::allocator<void> >)}[m[K') to type '[01m[Kuint32_t {aka unsigned int}[m[K'
+                 ("mavros/mission/reached",&WaypointFollower::reached_cb,this);
+[01;32m[K                                                                             ^[m[K
+In file included from [01m[K/opt/ros/kinetic/include/ros/ros.h:45:0[m[K,
+                 from [01m[K/home/lke/SK-Autopilot/src/sk_autopilot/src/waypoint_follower.cpp:1[m[K:
+[01m[K/opt/ros/kinetic/include/ros/node_handle.h:413:14:[m[K [01;36m[Knote: [m[Kcandidate: template<class M, class T> ros::Subscriber ros::NodeHandle::subscribe(const string&, uint32_t, void (T::*)(M) const, T*, const ros::TransportHints&)
+   Subscriber subscribe(const std::string& topic, uint32_t queue_size, void(T::*fp)(M) const, T* obj, 
+[01;32m[K              ^[m[K
+[01m[K/opt/ros/kinetic/include/ros/node_handle.h:413:14:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/lke/SK-Autopilot/src/sk_autopilot/src/waypoint_follower.cpp:47:77:[m[K [01;36m[Knote: [m[K  cannot convert '[01m[K&WaypointFollower::reached_cb[m[K' (type '[01m[Kvoid (WaypointFollower::*)(mavros_msgs::WaypointReached) {aka void (WaypointFollower::*)(mavros_msgs::WaypointReached_<std::allocator<void> >)}[m[K') to type '[01m[Kuint32_t {aka unsigned int}[m[K'
+                 ("mavros/mission/reached",&WaypointFollower::reached_cb,this);
+[01;32m[K                                                                             ^[m[K
+In file included from [01m[K/opt/ros/kinetic/include/ros/ros.h:45:0[m[K,
+                 from [01m[K/home/lke/SK-Autopilot/src/sk_autopilot/src/waypoint_follower.cpp:1[m[K:
+[01m[K/opt/ros/kinetic/include/ros/node_handle.h:465:14:[m[K [01;36m[Knote: [m[Kcandidate: template<class M, class T> ros::Subscriber ros::NodeHandle::subscribe(const string&, uint32_t, void (T::*)(const boost::shared_ptr<const M>&), T*, const ros::TransportHints&)
+   Subscriber subscribe(const std::string& topic, uint32_t queue_size, 
+[01;32m[K              ^[m[K
+[01m[K/opt/ros/kinetic/include/ros/node_handle.h:465:14:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/lke/SK-Autopilot/src/sk_autopilot/src/waypoint_follower.cpp:47:77:[m[K [01;36m[Knote: [m[K  cannot convert '[01m[K&WaypointFollower::reached_cb[m[K' (type '[01m[Kvoid (WaypointFollower::*)(mavros_msgs::WaypointReached) {aka void (WaypointFollower::*)(mavros_msgs::WaypointReached_<std::allocator<void> >)}[m[K') to type '[01m[Kuint32_t {aka unsigned int}[m[K'
+                 ("mavros/mission/reached",&WaypointFollower::reached_cb,this);
+[01;32m[K                                                                             ^[m[K
+In file included from [01m[K/opt/ros/kinetic/include/ros/ros.h:45:0[m[K,
+                 from [01m[K/home/lke/SK-Autopilot/src/sk_autopilot/src/waypoint_follower.cpp:1[m[K:
+[01m[K/opt/ros/kinetic/include/ros/node_handle.h:475:14:[m[K [01;36m[Knote: [m[Kcandidate: template<class M, class T> ros::Subscriber ros::NodeHandle::subscribe(const string&, uint32_t, void (T::*)(const boost::shared_ptr<const M>&) const, T*, const ros::TransportHints&)
+   Subscriber subscribe(const std::string& topic, uint32_t queue_size, 
+[01;32m[K              ^[m[K
+[01m[K/opt/ros/kinetic/include/ros/node_handle.h:475:14:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/lke/SK-Autopilot/src/sk_autopilot/src/waypoint_follower.cpp:47:77:[m[K [01;36m[Knote: [m[K  cannot convert '[01m[K&WaypointFollower::reached_cb[m[K' (type '[01m[Kvoid (WaypointFollower::*)(mavros_msgs::WaypointReached) {aka void (WaypointFollower::*)(mavros_msgs::WaypointReached_<std::allocator<void> >)}[m[K') to type '[01m[Kuint32_t {aka unsigned int}[m[K'
+                 ("mavros/mission/reached",&WaypointFollower::reached_cb,this);
+[01;32m[K                                                                             ^[m[K
+In file included from [01m[K/opt/ros/kinetic/include/ros/ros.h:45:0[m[K,
+                 from [01m[K/home/lke/SK-Autopilot/src/sk_autopilot/src/waypoint_follower.cpp:1[m[K:
+[01m[K/opt/ros/kinetic/include/ros/node_handle.h:529:14:[m[K [01;36m[Knote: [m[Kcandidate: template<class M, class T> ros::Subscriber ros::NodeHandle::subscribe(const string&, uint32_t, void (T::*)(M), const boost::shared_ptr<U>&, const ros::TransportHints&)
+   Subscriber subscribe(const std::string& topic, uint32_t queue_size, void(T::*fp)(M), 
+[01;32m[K              ^[m[K
+[01m[K/opt/ros/kinetic/include/ros/node_handle.h:529:14:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/lke/SK-Autopilot/src/sk_autopilot/src/waypoint_follower.cpp:47:77:[m[K [01;36m[Knote: [m[K  cannot convert '[01m[K&WaypointFollower::reached_cb[m[K' (type '[01m[Kvoid (WaypointFollower::*)(mavros_msgs::WaypointReached) {aka void (WaypointFollower::*)(mavros_msgs::WaypointReached_<std::allocator<void> >)}[m[K') to type '[01m[Kuint32_t {aka unsigned int}[m[K'
+                 ("mavros/mission/reached",&WaypointFollower::reached_cb,this);
+[01;32m[K                                                                             ^[m[K
+In file included from [01m[K/opt/ros/kinetic/include/ros/ros.h:45:0[m[K,
+                 from [01m[K/home/lke/SK-Autopilot/src/sk_autopilot/src/waypoint_follower.cpp:1[m[K:
+[01m[K/opt/ros/kinetic/include/ros/node_handle.h:540:14:[m[K [01;36m[Knote: [m[Kcandidate: template<class M, class T> ros::Subscriber ros::NodeHandle::subscribe(const string&, uint32_t, void (T::*)(M) const, const boost::shared_ptr<U>&, const ros::TransportHints&)
+   Subscriber subscribe(const std::string& topic, uint32_t queue_size, void(T::*fp)(M) const, 
+[01;32m[K              ^[m[K
+[01m[K/opt/ros/kinetic/include/ros/node_handle.h:540:14:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/lke/SK-Autopilot/src/sk_autopilot/src/waypoint_follower.cpp:47:77:[m[K [01;36m[Knote: [m[K  cannot convert '[01m[K&WaypointFollower::reached_cb[m[K' (type '[01m[Kvoid (WaypointFollower::*)(mavros_msgs::WaypointReached) {aka void (WaypointFollower::*)(mavros_msgs::WaypointReached_<std::allocator<void> >)}[m[K') to type '[01m[Kuint32_t {aka unsigned int}[m[K'
+                 ("mavros/mission/reached",&WaypointFollower::reached_cb,this);
+[01;32m[K                                                                             ^[m[K
+In file included from [01m[K/opt/ros/kinetic/include/ros/ros.h:45:0[m[K,
+                 from [01m[K/home/lke/SK-Autopilot/src/sk_autopilot/src/waypoint_follower.cpp:1[m[K:
+[01m[K/opt/ros/kinetic/include/ros/node_handle.h:594:14:[m[K [01;36m[Knote: [m[Kcandidate: template<class M, class T> ros::Subscriber ros::NodeHandle::subscribe(const string&, uint32_t, void (T::*)(const boost::shared_ptr<const M>&), const boost::shared_ptr<U>&, const ros::TransportHints&)
+   Subscriber subscribe(const std::string& topic, uint32_t queue_size, 
+[01;32m[K              ^[m[K
+[01m[K/opt/ros/kinetic/include/ros/node_handle.h:594:14:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/lke/SK-Autopilot/src/sk_autopilot/src/waypoint_follower.cpp:47:77:[m[K [01;36m[Knote: [m[K  cannot convert '[01m[K&WaypointFollower::reached_cb[m[K' (type '[01m[Kvoid (WaypointFollower::*)(mavros_msgs::WaypointReached) {aka void (WaypointFollower::*)(mavros_msgs::WaypointReached_<std::allocator<void> >)}[m[K') to type '[01m[Kuint32_t {aka unsigned int}[m[K'
+                 ("mavros/mission/reached",&WaypointFollower::reached_cb,this);
+[01;32m[K                                                                             ^[m[K
+In file included from [01m[K/opt/ros/kinetic/include/ros/ros.h:45:0[m[K,
+                 from [01m[K/home/lke/SK-Autopilot/src/sk_autopilot/src/waypoint_follower.cpp:1[m[K:
+[01m[K/opt/ros/kinetic/include/ros/node_handle.h:605:14:[m[K [01;36m[Knote: [m[Kcandidate: template<class M, class T> ros::Subscriber ros::NodeHandle::subscribe(const string&, uint32_t, void (T::*)(const boost::shared_ptr<const M>&) const, const boost::shared_ptr<U>&, const ros::TransportHints&)
+   Subscriber subscribe(const std::string& topic, uint32_t queue_size, 
+[01;32m[K              ^[m[K
+[01m[K/opt/ros/kinetic/include/ros/node_handle.h:605:14:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/lke/SK-Autopilot/src/sk_autopilot/src/waypoint_follower.cpp:47:77:[m[K [01;36m[Knote: [m[K  cannot convert '[01m[K&WaypointFollower::reached_cb[m[K' (type '[01m[Kvoid (WaypointFollower::*)(mavros_msgs::WaypointReached) {aka void (WaypointFollower::*)(mavros_msgs::WaypointReached_<std::allocator<void> >)}[m[K') to type '[01m[Kuint32_t {aka unsigned int}[m[K'
+                 ("mavros/mission/reached",&WaypointFollower::reached_cb,this);
+[01;32m[K                                                                             ^[m[K
+In file included from [01m[K/opt/ros/kinetic/include/ros/ros.h:45:0[m[K,
+                 from [01m[K/home/lke/SK-Autopilot/src/sk_autopilot/src/waypoint_follower.cpp:1[m[K:
+[01m[K/opt/ros/kinetic/include/ros/node_handle.h:656:14:[m[K [01;36m[Knote: [m[Kcandidate: template<class M> ros::Subscriber ros::NodeHandle::subscribe(const string&, uint32_t, void (*)(M), const ros::TransportHints&)
+   Subscriber subscribe(const std::string& topic, uint32_t queue_size, void(*fp)(M), const TransportHints& transport_hints = TransportHints())
+[01;32m[K              ^[m[K
+[01m[K/opt/ros/kinetic/include/ros/node_handle.h:656:14:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/lke/SK-Autopilot/src/sk_autopilot/src/waypoint_follower.cpp:47:77:[m[K [01;36m[Knote: [m[K  cannot convert '[01m[K&WaypointFollower::reached_cb[m[K' (type '[01m[Kvoid (WaypointFollower::*)(mavros_msgs::WaypointReached) {aka void (WaypointFollower::*)(mavros_msgs::WaypointReached_<std::allocator<void> >)}[m[K') to type '[01m[Kuint32_t {aka unsigned int}[m[K'
+                 ("mavros/mission/reached",&WaypointFollower::reached_cb,this);
+[01;32m[K                                                                             ^[m[K
+In file included from [01m[K/opt/ros/kinetic/include/ros/ros.h:45:0[m[K,
+                 from [01m[K/home/lke/SK-Autopilot/src/sk_autopilot/src/waypoint_follower.cpp:1[m[K:
+[01m[K/opt/ros/kinetic/include/ros/node_handle.h:704:14:[m[K [01;36m[Knote: [m[Kcandidate: template<class M> ros::Subscriber ros::NodeHandle::subscribe(const string&, uint32_t, void (*)(const boost::shared_ptr<const M>&), const ros::TransportHints&)
+   Subscriber subscribe(const std::string& topic, uint32_t queue_size, void(*fp)(const boost::shared_ptr<M const>&), const TransportHints& transport_hints = TransportHints())
+[01;32m[K              ^[m[K
+[01m[K/opt/ros/kinetic/include/ros/node_handle.h:704:14:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/lke/SK-Autopilot/src/sk_autopilot/src/waypoint_follower.cpp:47:77:[m[K [01;36m[Knote: [m[K  cannot convert '[01m[K&WaypointFollower::reached_cb[m[K' (type '[01m[Kvoid (WaypointFollower::*)(mavros_msgs::WaypointReached) {aka void (WaypointFollower::*)(mavros_msgs::WaypointReached_<std::allocator<void> >)}[m[K') to type '[01m[Kuint32_t {aka unsigned int}[m[K'
+                 ("mavros/mission/reached",&WaypointFollower::reached_cb,this);
+[01;32m[K                                                                             ^[m[K
+In file included from [01m[K/opt/ros/kinetic/include/ros/ros.h:45:0[m[K,
+                 from [01m[K/home/lke/SK-Autopilot/src/sk_autopilot/src/waypoint_follower.cpp:1[m[K:
+[01m[K/opt/ros/kinetic/include/ros/node_handle.h:750:14:[m[K [01;36m[Knote: [m[Kcandidate: template<class M> ros::Subscriber ros::NodeHandle::subscribe(const string&, uint32_t, const boost::function<void(const boost::shared_ptr<const M>&)>&, const VoidConstPtr&, const ros::TransportHints&)
+   Subscriber subscribe(const std::string& topic, uint32_t queue_size, const boost::function<void (const boost::shared_ptr<M const>&)>& callback,
+[01;32m[K              ^[m[K
+[01m[K/opt/ros/kinetic/include/ros/node_handle.h:750:14:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/lke/SK-Autopilot/src/sk_autopilot/src/waypoint_follower.cpp:47:77:[m[K [01;36m[Knote: [m[K  cannot convert '[01m[K&WaypointFollower::reached_cb[m[K' (type '[01m[Kvoid (WaypointFollower::*)(mavros_msgs::WaypointReached) {aka void (WaypointFollower::*)(mavros_msgs::WaypointReached_<std::allocator<void> >)}[m[K') to type '[01m[Kuint32_t {aka unsigned int}[m[K'
+                 ("mavros/mission/reached",&WaypointFollower::reached_cb,this);
+[01;32m[K                                                                             ^[m[K
+In file included from [01m[K/opt/ros/kinetic/include/ros/ros.h:45:0[m[K,
+                 from [01m[K/home/lke/SK-Autopilot/src/sk_autopilot/src/waypoint_follower.cpp:1[m[K:
+[01m[K/opt/ros/kinetic/include/ros/node_handle.h:799:14:[m[K [01;36m[Knote: [m[Kcandidate: template<class M, class C> ros::Subscriber ros::NodeHandle::subscribe(const string&, uint32_t, const boost::function<void(C)>&, const VoidConstPtr&, const ros::TransportHints&)
+   Subscriber subscribe(const std::string& topic, uint32_t queue_size, const boost::function<void (C)>& callback,
+[01;32m[K              ^[m[K
+[01m[K/opt/ros/kinetic/include/ros/node_handle.h:799:14:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/lke/SK-Autopilot/src/sk_autopilot/src/waypoint_follower.cpp:47:77:[m[K [01;36m[Knote: [m[K  cannot convert '[01m[K&WaypointFollower::reached_cb[m[K' (type '[01m[Kvoid (WaypointFollower::*)(mavros_msgs::WaypointReached) {aka void (WaypointFollower::*)(mavros_msgs::WaypointReached_<std::allocator<void> >)}[m[K') to type '[01m[Kuint32_t {aka unsigned int}[m[K'
+                 ("mavros/mission/reached",&WaypointFollower::reached_cb,this);
+[01;32m[K                                                                             ^[m[K
+In file included from [01m[K/opt/ros/kinetic/include/ros/ros.h:45:0[m[K,
+                 from [01m[K/home/lke/SK-Autopilot/src/sk_autopilot/src/waypoint_follower.cpp:1[m[K:
+[01m[K/opt/ros/kinetic/include/ros/node_handle.h:836:14:[m[K [01;36m[Knote: [m[Kcandidate: ros::Subscriber ros::NodeHandle::subscribe(ros::SubscribeOptions&)
+   Subscriber subscribe(SubscribeOptions& ops);
+[01;32m[K              ^[m[K
+[01m[K/opt/ros/kinetic/include/ros/node_handle.h:836:14:[m[K [01;36m[Knote: [m[K  candidate expects 1 argument, 3 provided
+[01m[K/home/lke/SK-Autopilot/src/sk_autopilot/src/waypoint_follower.cpp:[m[K In member function '[01m[Kvoid WaypointFollower::reached_cb(mavros_msgs::WaypointReached)[m[K':
+[01m[K/home/lke/SK-Autopilot/src/sk_autopilot/src/waypoint_follower.cpp:69:19:[m[K [01;31m[Kerror: [m[Kbase operand of '[01m[K->[m[K' has non-pointer type '[01m[Kmavros_msgs::WaypointReached {aka mavros_msgs::WaypointReached_<std::allocator<void> >}[m[K'
+         wp_seq=msg->wp_seq;
+[01;32m[K                   ^[m[K
+make[2]: *** [CMakeFiles/waypoint_follower.dir/src/waypoint_follower.cpp.o] Error 1
+make[1]: *** [CMakeFiles/waypoint_follower.dir/all] Error 2
+make: *** [all] Error 2

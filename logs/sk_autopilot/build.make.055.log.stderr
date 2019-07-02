@@ -1,0 +1,3 @@
+[01m[K/home/lke/SK-Autopilot/src/sk_autopilot/src/waypoint_follower.cpp:29:20:[m[K [01;35m[Kwarning: [m[Knon-static data member initializers only available with -std=c++11 or -std=gnu++11
+     bool wp_pushed=false;
+[01;32m[K                    ^[m[K

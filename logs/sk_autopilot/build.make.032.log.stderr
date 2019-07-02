@@ -1,0 +1,7 @@
+[01m[K/home/lke/SK-Autopilot/src/sk_autopilot/src/waypoint_follower.cpp:[m[K In function '[01m[Kint main(int, char**)[m[K':
+[01m[K/home/lke/SK-Autopilot/src/sk_autopilot/src/waypoint_follower.cpp:324:40:[m[K [01;31m[Kerror: [m[K'[01m[Kmavros_msgs::SetMode::Response {aka struct mavros_msgs::SetModeResponse_<std::allocator<void> >}[m[K' has no member named '[01m[Ksuccess[m[K'
+                 auto_set_mode.response.success){
+[01;32m[K                                        ^[m[K
+make[2]: *** [CMakeFiles/waypoint_follower.dir/src/waypoint_follower.cpp.o] Error 1
+make[1]: *** [CMakeFiles/waypoint_follower.dir/all] Error 2
+make: *** [all] Error 2
