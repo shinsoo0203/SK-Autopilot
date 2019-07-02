@@ -1,0 +1,10 @@
+[01m[K/home/lke/SK-Autopilot/src/waypoint_generator/src/waypoint_generator.cpp:[m[K In constructor '[01m[KWaypointGenerator::WaypointGenerator()[m[K':
+[01m[K/home/lke/SK-Autopilot/src/waypoint_generator/src/waypoint_generator.cpp:24:36:[m[K [01;31m[Kerror: [m[Kconflicting declaration '[01m[Kgeometry_msgs::PoseStamped wp[m[K'
+         geometry_msgs::PoseStamped wp;
+[01;32m[K                                    ^[m[K
+[01m[K/home/lke/SK-Autopilot/src/waypoint_generator/src/waypoint_generator.cpp:23:31:[m[K [01;36m[Knote: [m[Kprevious declaration as '[01m[Kmavros_msgs::Waypoint wp[m[K'
+         mavros_msgs::Waypoint wp;
+[01;32m[K                               ^[m[K
+make[2]: *** [CMakeFiles/waypoint_generator.dir/src/waypoint_generator.cpp.o] Error 1
+make[1]: *** [CMakeFiles/waypoint_generator.dir/all] Error 2
+make: *** [all] Error 2

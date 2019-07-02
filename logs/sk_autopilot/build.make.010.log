@@ -1,0 +1,5 @@
+[35m[1mScanning dependencies of target waypoint_follower[0m
+[ 25%] [32mBuilding CXX object CMakeFiles/waypoint_follower.dir/src/waypoint_follower.cpp.o[0m
+[ 75%] Built target waypoint_generator
+[100%] [32m[1mLinking CXX executable /home/lke/SK-Autopilot/devel/.private/sk_autopilot/lib/sk_autopilot/waypoint_follower[0m
+[100%] Built target waypoint_follower

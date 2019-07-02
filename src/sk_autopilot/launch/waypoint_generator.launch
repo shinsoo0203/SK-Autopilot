@@ -1,0 +1,58 @@
+<launch>
+
+    <arg name="wp0_lat" default="37.544156" />
+    <arg name="wp0_lon" default="127.078417" />
+    <arg name="wp0_alt" default="20.0" />
+    <arg name="wp0_velocity" default="5.0" />
+
+    <arg name="wp1_lat" default="37.544154" />
+    <arg name="wp1_lon" default="127.077878" />
+    <arg name="wp1_alt" default="50.0" />
+    <arg name="wp1_velocity" default="5.0" />
+
+    <arg name="wp2_lat" default="37.544224" />
+    <arg name="wp2_lon" default="127.077269" />
+    <arg name="wp2_alt" default="20.0" />
+    <arg name="wp2_velocity" default="5.0" />
+
+    <arg name="wp3_lat" default="37.544558" />
+    <arg name="wp3_lon" default="127.077314" />
+    <arg name="wp3_alt" default="5.0" />
+    <arg name="wp3_velocity" default="5.0" />
+
+    <arg name="wp4_lat" default="37.544479" />
+    <arg name="wp4_lon" default="127.077930" />
+    <arg name="wp4_alt" default="30.0" />
+    <arg name="wp4_velocity" default="5.0" />
+
+    <arg name="restrict_zone_lat" default="37.544156" />
+    <arg name="restrict_zone_lon" default="127.078417" />
+    <arg name="restrict_zone_alt" default="0.0" />
+
+    <node pkg="sk_autopilot" type="waypoint_generator" name="waypoint_generator" output="screen">
+        <param name="wp0_lat" value="$(arg wp0_lat)"/>
+        <param name="wp0_lon" value="$(arg wp0_lon)"/>
+        <param name="wp0_alt" value="$(arg wp0_alt)"/>
+        <param name="wp0_velocity" value="$(arg wp1_velocity)"/>
+        <param name="wp1_lat" value="$(arg wp1_lat)"/>
+        <param name="wp1_lon" value="$(arg wp1_lon)"/>
+        <param name="wp1_alt" value="$(arg wp1_alt)"/>
+        <param name="wp1_velocity" value="$(arg wp1_velocity)"/>
+        <param name="wp2_lat" value="$(arg wp2_lat)"/>
+        <param name="wp2_lon" value="$(arg wp2_lon)"/>
+        <param name="wp2_alt" value="$(arg wp2_alt)"/>
+        <param name="wp2_velocity" value="$(arg wp2_velocity)"/>
+        <param name="wp3_lat" value="$(arg wp3_lat)"/>
+        <param name="wp3_lon" value="$(arg wp3_lon)"/>
+        <param name="wp3_alt" value="$(arg wp3_alt)"/>
+        <param name="wp3_velocity" value="$(arg wp3_velocity)"/>
+        <param name="wp4_lat" value="$(arg wp4_lat)"/>
+        <param name="wp4_lon" value="$(arg wp4_lon)"/>
+        <param name="wp4_alt" value="$(arg wp4_alt)"/>
+        <param name="wp4_velocity" value="$(arg wp4_velocity)"/>
+        <param name="restrict_zone_lat" value="$(arg restrict_zone_lat)"/>
+        <param name="restrict_zone_lon" value="$(arg restrict_zone_lon)"/>
+        <param name="restrict_zone_alt" value="$(arg restrict_zone_alt)"/>
+    </node>
+
+</launch>

@@ -1,0 +1,32 @@
+[01m[K/home/lke/SK-Autopilot/src/waypoint_generator/src/waypoint_generator.cpp:12:19:[m[K [01;35m[Kwarning: [m[Knon-static data member initializers only available with -std=c++11 or -std=gnu++11
+     double m_pi = 3.14159265358979323846;
+[01;32m[K                   ^[m[K
+[01m[K/home/lke/SK-Autopilot/src/waypoint_generator/src/waypoint_generator.cpp:14:31:[m[K [01;35m[Kwarning: [m[Knon-static data member initializers only available with -std=c++11 or -std=gnu++11
+     double m_origin_lat_deg = 37.544339;
+[01;32m[K                               ^[m[K
+[01m[K/home/lke/SK-Autopilot/src/waypoint_generator/src/waypoint_generator.cpp:15:55:[m[K [01;35m[Kwarning: [m[Knon-static data member initializers only available with -std=c++11 or -std=gnu++11
+     double m_origin_lat_rad = m_origin_lat_deg * m_pi/180.0;
+[01;32m[K                                                       ^[m[K
+[01m[K/home/lke/SK-Autopilot/src/waypoint_generator/src/waypoint_generator.cpp:17:31:[m[K [01;35m[Kwarning: [m[Knon-static data member initializers only available with -std=c++11 or -std=gnu++11
+     double m_origin_lon_deg = 127.078036;
+[01;32m[K                               ^[m[K
+[01m[K/home/lke/SK-Autopilot/src/waypoint_generator/src/waypoint_generator.cpp:18:55:[m[K [01;35m[Kwarning: [m[Knon-static data member initializers only available with -std=c++11 or -std=gnu++11
+     double m_origin_lon_rad = m_origin_lon_deg * m_pi/180.0;
+[01;32m[K                                                       ^[m[K
+[01m[K/home/lke/SK-Autopilot/src/waypoint_generator/src/waypoint_generator.cpp:20:18:[m[K [01;35m[Kwarning: [m[Knon-static data member initializers only available with -std=c++11 or -std=gnu++11
+     double m_a = 6378137.0;       // semi-major axis [m]
+[01;32m[K                  ^[m[K
+[01m[K/home/lke/SK-Autopilot/src/waypoint_generator/src/waypoint_generator.cpp:21:18:[m[K [01;35m[Kwarning: [m[Knon-static data member initializers only available with -std=c++11 or -std=gnu++11
+     double m_b = 6356752.314245;  // semi-minor axis [m]
+[01;32m[K                  ^[m[K
+[01m[K/home/lke/SK-Autopilot/src/waypoint_generator/src/waypoint_generator.cpp:[m[K In member function '[01m[Kvoid WaypointGenerator::enuConversion()[m[K':
+[01m[K/home/lke/SK-Autopilot/src/waypoint_generator/src/waypoint_generator.cpp:59:19:[m[K [01;31m[Kerror: [m[K'[01m[Ki_point[m[K' does not name a type
+         for (auto i_point = 0; i_point < global_waypoints.waypoints.size(); i_point++)
+[01;32m[K                   ^[m[K
+[01m[K/home/lke/SK-Autopilot/src/waypoint_generator/src/waypoint_generator.cpp:59:32:[m[K [01;31m[Kerror: [m[Kexpected '[01m[K;[m[K' before '[01m[Ki_point[m[K'
+         for (auto i_point = 0; i_point < global_waypoints.waypoints.size(); i_point++)
+[01;32m[K                                ^[m[K
+[01m[K/home/lke/SK-Autopilot/src/waypoint_generator/src/waypoint_generator.cpp:59:32:[m[K [01;31m[Kerror: [m[K'[01m[Ki_point[m[K' was not declared in this scope
+make[2]: *** [CMakeFiles/waypoint_generator.dir/src/waypoint_generator.cpp.o] Error 1
+make[1]: *** [CMakeFiles/waypoint_generator.dir/all] Error 2
+make: *** [all] Error 2

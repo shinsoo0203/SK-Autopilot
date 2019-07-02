@@ -1,0 +1,5 @@
+[01m[K/home/lke/SK-Autopilot/src/waypoint_generator/src/waypoint_generator.cpp:2:29:[m[K [01;31m[Kfatal error: [m[Kmavros/Waypoint.h: 그런 파일이나 디렉터리가 없습니다
+compilation terminated.
+make[2]: *** [CMakeFiles/waypoint_generator.dir/src/waypoint_generator.cpp.o] 오류 1
+make[1]: *** [CMakeFiles/waypoint_generator.dir/all] 오류 2
+make: *** [all] 오류 2

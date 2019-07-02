@@ -1,0 +1,21 @@
+[01m[K/home/lke/SK-Autopilot/src/waypoint_generator/src/waypoint_generator.cpp:14:19:[m[K [01;35m[Kwarning: [m[Knon-static data member initializers only available with -std=c++11 or -std=gnu++11
+     double m_pi = 3.14159265358979323846;
+[01;32m[K                   ^[m[K
+[01m[K/home/lke/SK-Autopilot/src/waypoint_generator/src/waypoint_generator.cpp:16:31:[m[K [01;35m[Kwarning: [m[Knon-static data member initializers only available with -std=c++11 or -std=gnu++11
+     double m_origin_lat_deg = 37.544156;
+[01;32m[K                               ^[m[K
+[01m[K/home/lke/SK-Autopilot/src/waypoint_generator/src/waypoint_generator.cpp:17:55:[m[K [01;35m[Kwarning: [m[Knon-static data member initializers only available with -std=c++11 or -std=gnu++11
+     double m_origin_lat_rad = m_origin_lat_deg * m_pi/180.0;
+[01;32m[K                                                       ^[m[K
+[01m[K/home/lke/SK-Autopilot/src/waypoint_generator/src/waypoint_generator.cpp:19:31:[m[K [01;35m[Kwarning: [m[Knon-static data member initializers only available with -std=c++11 or -std=gnu++11
+     double m_origin_lon_deg = 127.078417;
+[01;32m[K                               ^[m[K
+[01m[K/home/lke/SK-Autopilot/src/waypoint_generator/src/waypoint_generator.cpp:20:55:[m[K [01;35m[Kwarning: [m[Knon-static data member initializers only available with -std=c++11 or -std=gnu++11
+     double m_origin_lon_rad = m_origin_lon_deg * m_pi/180.0;
+[01;32m[K                                                       ^[m[K
+[01m[K/home/lke/SK-Autopilot/src/waypoint_generator/src/waypoint_generator.cpp:22:18:[m[K [01;35m[Kwarning: [m[Knon-static data member initializers only available with -std=c++11 or -std=gnu++11
+     double m_a = 6378137.0;       // semi-major axis [m]
+[01;32m[K                  ^[m[K
+[01m[K/home/lke/SK-Autopilot/src/waypoint_generator/src/waypoint_generator.cpp:23:18:[m[K [01;35m[Kwarning: [m[Knon-static data member initializers only available with -std=c++11 or -std=gnu++11
+     double m_b = 6356752.314245;  // semi-minor axis [m]
+[01;32m[K                  ^[m[K

@@ -1,0 +1,7 @@
+[01m[K/home/lke/SK-Autopilot/src/waypoint_generator/src/waypoint_follower.cpp:[m[K In member function '[01m[Kvoid WaypointFollower::nextWp()[m[K':
+[01m[K/home/lke/SK-Autopilot/src/waypoint_generator/src/waypoint_follower.cpp:81:22:[m[K [01;31m[Kerror: [m[K'[01m[Kath[m[K' was not declared in this scope
+         double tmp = ath[2].pose.position.x;
+[01;32m[K                      ^[m[K
+make[2]: *** [CMakeFiles/waypoint_follower.dir/src/waypoint_follower.cpp.o] Error 1
+make[1]: *** [CMakeFiles/waypoint_follower.dir/all] Error 2
+make: *** [all] Error 2

@@ -1,0 +1,35 @@
+[01m[K/home/lke/SK-Autopilot/src/waypoint_generator/src/waypoint_follower.cpp:[m[K In constructor '[01m[KWaypointFollower::WaypointFollower()[m[K':
+[01m[K/home/lke/SK-Autopilot/src/waypoint_generator/src/waypoint_follower.cpp:27:46:[m[K [01;31m[Kerror: [m[Kinvalid use of non-static member function
+                 ("mavros/state", 10, state_cb);
+[01;32m[K                                              ^[m[K
+In file included from [01m[K/opt/ros/kinetic/include/ros/ros.h:40:0[m[K,
+                 from [01m[K/home/lke/SK-Autopilot/src/waypoint_generator/src/waypoint_follower.cpp:1[m[K:
+[01m[K/home/lke/SK-Autopilot/src/waypoint_generator/src/waypoint_follower.cpp:[m[K In member function '[01m[Kvoid WaypointFollower::waypointsCb(const ConstPtr&)[m[K':
+[01m[K/home/lke/SK-Autopilot/src/waypoint_generator/src/waypoint_follower.cpp:38:97:[m[K [01;31m[Kerror: [m[K'[01m[Kstruct mavros_msgs::Waypoint_<std::allocator<void> >[m[K' has no member named '[01m[Ky_lone[m[K'
+             ROS_INFO("%lf %lf %lf \n",waypoints.waypoints.at(i).x_lat,waypoints.waypoints.at(i).y_lone,waypoints.waypoints.at(i).z_alt);
+[01;32m[K                                                                                                 ^[m[K
+[01m[K/opt/ros/kinetic/include/ros/console.h:346:165:[m[K [01;36m[Knote: [m[Kin definition of macro '[01m[KROSCONSOLE_PRINT_AT_LOCATION_WITH_FILTER[m[K'
+     ::ros::console::print(filter, __rosconsole_define_location__loc.logger_, __rosconsole_define_location__loc.level_, __FILE__, __LINE__, __ROSCONSOLE_FUNCTION__, __VA_ARGS__)
+[01;32m[K                                                                                                                                                                     ^[m[K
+[01m[K/opt/ros/kinetic/include/ros/console.h:379:7:[m[K [01;36m[Knote: [m[Kin expansion of macro '[01m[KROSCONSOLE_PRINT_AT_LOCATION[m[K'
+       ROSCONSOLE_PRINT_AT_LOCATION(__VA_ARGS__); \
+[01;32m[K       ^[m[K
+[01m[K/opt/ros/kinetic/include/ros/console.h:561:35:[m[K [01;36m[Knote: [m[Kin expansion of macro '[01m[KROS_LOG_COND[m[K'
+ #define ROS_LOG(level, name, ...) ROS_LOG_COND(true, level, name, __VA_ARGS__)
+[01;32m[K                                   ^[m[K
+[01m[K/opt/ros/kinetic/include/rosconsole/macros_generated.h:110:23:[m[K [01;36m[Knote: [m[Kin expansion of macro '[01m[KROS_LOG[m[K'
+ #define ROS_INFO(...) ROS_LOG(::ros::console::levels::Info, ROSCONSOLE_DEFAULT_NAME, __VA_ARGS__)
+[01;32m[K                       ^[m[K
+[01m[K/home/lke/SK-Autopilot/src/waypoint_generator/src/waypoint_follower.cpp:38:13:[m[K [01;36m[Knote: [m[Kin expansion of macro '[01m[KROS_INFO[m[K'
+             ROS_INFO("%lf %lf %lf \n",waypoints.waypoints.at(i).x_lat,waypoints.waypoints.at(i).y_lone,waypoints.waypoints.at(i).z_alt);
+[01;32m[K             ^[m[K
+[01m[K/home/lke/SK-Autopilot/src/waypoint_generator/src/waypoint_follower.cpp:[m[K In function '[01m[Kint main(int, char**)[m[K':
+[01m[K/home/lke/SK-Autopilot/src/waypoint_generator/src/waypoint_follower.cpp:19:24:[m[K [01;31m[Kerror: [m[K'[01m[Kmavros_msgs::State WaypointFollower::current_state[m[K' is protected
+     mavros_msgs::State current_state;
+[01;32m[K                        ^[m[K
+[01m[K/home/lke/SK-Autopilot/src/waypoint_generator/src/waypoint_follower.cpp:53:27:[m[K [01;31m[Kerror: [m[Kwithin this context
+     while(ros::ok() && wf.current_state.connected){
+[01;32m[K                           ^[m[K
+make[2]: *** [CMakeFiles/waypoint_follower.dir/src/waypoint_follower.cpp.o] Error 1
+make[1]: *** [CMakeFiles/waypoint_follower.dir/all] Error 2
+make: *** [all] Error 2
