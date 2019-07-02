@@ -21,7 +21,7 @@ protected:
     ros::Publisher local_pos_pub;
     ros::Subscriber local_pos_sub;
 
-    mavros_msgs::WaypointList waypoints;
+    mavros_msgs::WaypointList list;
     mavros_msgs::State current_state;
 
     geometry_msgs::PoseStamped curr_local_pose;
@@ -75,12 +75,12 @@ public:
         for(int i=0;i<path.size();i++) {
             if(i==current_seq)  {
                 ROS_INFO("wp : %lf %lf %lf ",path.at(i).pose.position.x,path.at(i).pose.position.y,path.at(i).pose.position.z);
-                double dist=sqrt(pow(waypoints.waypoints.at(current_seq).x_lat-curr_local_pose.pose.position.x,2)
-                                +pow(waypoints.waypoints.at(current_seq).y_long-curr_local_pose.pose.position.y,2)
-                                 +pow(waypoints.waypoints.at(current_seq).z_alt-curr_local_pose.pose.position.z,2));
+                double dist=sqrt(pow(list.waypoints.at(current_seq).x_lat-curr_local_pose.pose.position.x,2)
+                                +pow(list.waypoints.at(current_seq).y_long-curr_local_pose.pose.position.y,2)
+                                 +pow(list.waypoints.at(current_seq).z_alt-curr_local_pose.pose.position.z,2));
                 ROS_INFO("dist : %lf",dist);
                 if(dist<dist_min && !change_flag) {
-                    if(current_seq==waypoints.waypoints.size()-1) {
+                    if(current_seq==list.waypoints.size()-1) {
                         ROS_INFO("Landing..");
                     }
                     else current_seq++;
@@ -100,12 +100,12 @@ public:
     }
     void waypointsCb(const mavros_msgs::WaypointList::ConstPtr& msg) {
         if(start) return;
-        waypoints.waypoints=msg->waypoints;
-        for(int i=0;i<waypoints.waypoints.size();i++) {
+        list.waypoints=msg->waypoints;
+        for(int i=0;i<list.waypoints.size();i++) {
             geometry_msgs::PoseStamped pose;
-            pose.pose.position.x=waypoints.waypoints.at(i).x_lat;
-            pose.pose.position.y=waypoints.waypoints.at(i).y_long;
-            pose.pose.position.z=waypoints.waypoints.at(i).z_alt;
+            pose.pose.position.x=list.waypoints.at(i).x_lat;
+            pose.pose.position.y=list.waypoints.at(i).y_long;
+            pose.pose.position.z=list.waypoints.at(i).z_alt;
             path.push_back(pose);
             ROS_INFO("wp : %lf %lf %lf",pose.pose.position.x,pose.pose.position.y,pose.pose.position.z);
         }
@@ -121,11 +121,11 @@ public:
         return current_state.connected;
     }
     void setpointPub() {
-        for(int i=0;i<waypoints.waypoints.size();i++) {
+        for(int i=0;i<list.waypoints.size();i++) {
             if(i==current_seq) {
-                setpoint.pose.position.x = waypoints.waypoints.at(i).x_lat;
-                setpoint.pose.position.y = waypoints.waypoints.at(i).y_long;
-                setpoint.pose.position.z = waypoints.waypoints.at(i).z_alt;
+                setpoint.pose.position.x = list.waypoints.at(i).x_lat;
+                setpoint.pose.position.y = list.waypoints.at(i).y_long;
+                setpoint.pose.position.z = list.waypoints.at(i).z_alt;
             }
         }
         local_pos_pub.publish(setpoint);
