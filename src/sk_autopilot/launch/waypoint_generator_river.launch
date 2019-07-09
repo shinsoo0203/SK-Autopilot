@@ -1,0 +1,50 @@
+<launch>
+
+    <arg name="wp0_lat" default="37.547552" />
+    <arg name="wp0_lon" default="127.120052" />
+    <arg name="wp0_alt" default="10.0" />
+
+    <arg name="wp1_lat" default="37.547613" />
+    <arg name="wp1_lon" default="127.119831" />
+    <arg name="wp1_alt" default="20.0" />
+
+    <arg name="wp2_lat" default="37.547794" />
+    <arg name="wp2_lon" default="127.119843" />
+    <arg name="wp2_alt" default="20.0" />
+
+    <arg name="wp3_lat" default="37.547911" />
+    <arg name="wp3_lon" default="127.120050" />
+    <arg name="wp3_alt" default="10.0" />
+
+    <arg name="wp4_lat" default="37.547702" />
+    <arg name="wp4_lon" default="127.119996" />
+    <arg name="wp4_alt" default="20.0" />
+
+    <arg name="restrict_zone_lat" default="37.544190" />
+    <arg name="restrict_zone_lon" default="127.077670" />
+    <arg name="restrict_zone_rad" default="10.0" />
+
+    <arg name="accept_rad" default="1.0" />
+
+    <node pkg="sk_autopilot" type="waypoint_generator" name="waypoint_generator" output="screen">
+        <param name="wp0_lat" value="$(arg wp0_lat)"/>
+        <param name="wp0_lon" value="$(arg wp0_lon)"/>
+        <param name="wp0_alt" value="$(arg wp0_alt)"/>
+        <param name="wp1_lat" value="$(arg wp1_lat)"/>
+        <param name="wp1_lon" value="$(arg wp1_lon)"/>
+        <param name="wp1_alt" value="$(arg wp1_alt)"/>
+        <param name="wp2_lat" value="$(arg wp2_lat)"/>
+        <param name="wp2_lon" value="$(arg wp2_lon)"/>
+        <param name="wp2_alt" value="$(arg wp2_alt)"/>
+        <param name="wp3_lat" value="$(arg wp3_lat)"/>
+        <param name="wp3_lon" value="$(arg wp3_lon)"/>
+        <param name="wp3_alt" value="$(arg wp3_alt)"/>
+        <param name="wp4_lat" value="$(arg wp4_lat)"/>
+        <param name="wp4_lon" value="$(arg wp4_lon)"/>
+        <param name="wp4_alt" value="$(arg wp4_alt)"/>
+        <param name="restrict_zone_lat" value="$(arg restrict_zone_lat)"/>
+        <param name="restrict_zone_lon" value="$(arg restrict_zone_lon)"/>
+        <param name="accept_rad" value="$(arg accept_rad)"/>
+    </node>
+
+</launch>

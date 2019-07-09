@@ -46,17 +46,17 @@ public:
         wp.autocontinue=true;
         global_waypoints.waypoints.push_back(wp);
 
-        m_rosNodeHandler.param("waypoint_generator/restrict_zone_lat", wp.x_lat, 0.0);
-        m_rosNodeHandler.param("waypoint_generator/restrict_zone_lon", wp.y_long, 0.0);
-        wp.z_alt=25.0;
-        wp.frame=mavros_msgs::Waypoint::FRAME_GLOBAL_REL_ALT;
-        wp.command=mavros_msgs::CommandCode::NAV_WAYPOINT;
-        wp.param1=0.0; // hold time (s)
-        wp.param2=accept_rad; // acceptance radius (m)
-        m_rosNodeHandler.param("waypoint_generator/restrict_zone_rad",wp.param3,(float)0.0); // 0 to pass through
-        wp.is_current=false;
-        wp.autocontinue=true;
-        global_waypoints.waypoints.push_back(wp);
+//        m_rosNodeHandler.param("waypoint_generator/restrict_zone_lat", wp.x_lat, 0.0);
+//        m_rosNodeHandler.param("waypoint_generator/restrict_zone_lon", wp.y_long, 0.0);
+//        wp.z_alt=25.0;
+//        wp.frame=mavros_msgs::Waypoint::FRAME_GLOBAL_REL_ALT;
+//        wp.command=mavros_msgs::CommandCode::NAV_WAYPOINT;
+//        wp.param1=0.0; // hold time (s)
+//        wp.param2=accept_rad; // acceptance radius (m)
+//        m_rosNodeHandler.param("waypoint_generator/restrict_zone_rad",wp.param3,(float)0.0); // 0 to pass through
+//        wp.is_current=false;
+//        wp.autocontinue=true;
+//        global_waypoints.waypoints.push_back(wp);
 
         m_rosNodeHandler.param("waypoint_generator/wp2_lat", wp.x_lat, 0.0);
         m_rosNodeHandler.param("waypoint_generator/wp2_lon", wp.y_long, 0.0);
