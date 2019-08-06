@@ -1,0 +1,10 @@
+[35m[1mScanning dependencies of target pub_setpoints_pos[0m
+[35m[1mScanning dependencies of target pub_setpoints_traj[0m
+[ 12%] [32mBuilding CXX object CMakeFiles/pub_setpoints_pos.dir/src/pub_setpoints_pos.cpp.o[0m
+[ 25%] [32mBuilding CXX object CMakeFiles/pub_setpoints_traj.dir/src/pub_setpoints_traj.cpp.o[0m
+[ 50%] Built target pub_setpoints_att
+[ 75%] Built target test_setpoints_traj
+[ 87%] [32m[1mLinking CXX executable /home/lke/SK-Autopilot/devel/.private/modudculab_ros/lib/modudculab_ros/pub_setpoints_pos[0m
+[ 87%] Built target pub_setpoints_pos
+[100%] [32m[1mLinking CXX executable /home/lke/SK-Autopilot/devel/.private/modudculab_ros/lib/modudculab_ros/pub_setpoints_traj[0m
+[100%] Built target pub_setpoints_traj

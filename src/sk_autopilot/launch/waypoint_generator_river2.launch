@@ -1,0 +1,37 @@
+<launch>
+
+    <arg name="wp0_lat" default="37.54756494682299" />
+    <arg name="wp0_lon" default="127.1200586501381" />
+    <arg name="wp0_alt" default="10.0" />
+
+    <arg name="wp1_lat" default="37.54768824888948" />
+    <arg name="wp1_lon" default="127.1199750651698" />
+    <arg name="wp1_alt" default="15.0" />
+
+    <arg name="wp2_lat" default="37.54774910787881" />
+    <arg name="wp2_lon" default="127.1198504075955" />
+    <arg name="wp2_alt" default="20.0" />
+
+    <arg name="wp3_lat" default="37.54750366089181" />
+    <arg name="wp3_lon" default="127.1199211331219" />
+    <arg name="wp3_alt" default="15.0" />
+
+    <arg name="accept_rad" default="1.0" />
+
+    <node pkg="sk_autopilot" type="waypoint_generator" name="waypoint_generator" output="screen">
+        <param name="wp0_lat" value="$(arg wp0_lat)"/>
+        <param name="wp0_lon" value="$(arg wp0_lon)"/>
+        <param name="wp0_alt" value="$(arg wp0_alt)"/>
+        <param name="wp1_lat" value="$(arg wp1_lat)"/>
+        <param name="wp1_lon" value="$(arg wp1_lon)"/>
+        <param name="wp1_alt" value="$(arg wp1_alt)"/>
+        <param name="wp2_lat" value="$(arg wp2_lat)"/>
+        <param name="wp2_lon" value="$(arg wp2_lon)"/>
+        <param name="wp2_alt" value="$(arg wp2_alt)"/>
+        <param name="wp3_lat" value="$(arg wp3_lat)"/>
+        <param name="wp3_lon" value="$(arg wp3_lon)"/>
+        <param name="wp3_alt" value="$(arg wp3_alt)"/>
+        <param name="accept_rad" value="$(arg accept_rad)"/>
+    </node>
+
+</launch>
