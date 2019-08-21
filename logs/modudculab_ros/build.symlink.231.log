@@ -1,7 +1,0 @@
-Symlinking /home/lke/SK-Autopilot/devel/share/modudculab_ros/cmake/modudculab_rosConfig-version.cmake
-Symlinking /home/lke/SK-Autopilot/devel/share/modudculab_ros/cmake/modudculab_rosConfig.cmake
-Symlinking /home/lke/SK-Autopilot/devel/lib/modudculab_ros/test_setpoints_traj
-Symlinking /home/lke/SK-Autopilot/devel/lib/modudculab_ros/pub_setpoints_pos
-Symlinking /home/lke/SK-Autopilot/devel/lib/modudculab_ros/pub_setpoints_att
-Symlinking /home/lke/SK-Autopilot/devel/lib/modudculab_ros/pub_setpoints_traj
-Symlinking /home/lke/SK-Autopilot/devel/lib/pkgconfig/modudculab_ros.pc

@@ -7,7 +7,7 @@
 #include <mavros_msgs/SetMode.h>
 #include <mavros_msgs/State.h>
 
-#define MISSION_POINT 4
+#define MISSION_POINT 2
 
 class WaypointFollower {
 protected:

@@ -1,0 +1,30 @@
+
+<참고>
+드론 전원 - 배터리
+라즈베리파이 전원 - 보조배터리
+
+<PX4>
+1. 텔레메트리 연결 
+2. $ sudo chmod 777 /dev/ttyUSB0
+3. ./QGroundControl.AppImage
+4. 원격비행 - inchun1.plan 파일 사용 
+
+<라즈베리파이> 
+1. 핫스팟 on - 노트북 핫스팟에 연결
+2. 라즈베리파이 전원 연결 - 라즈베리파이 초록색 점등 - 핫스팟 연결 확인
+3. 라즈베리파이 원격(ssh) 접속 
+
+$ ssh sk@192.168.43.231
+$ didwn
+
+-> 터미널 4개 이상 접속 
+
+4. 노드 켜기
+
+$ roscore
+
+$ roslaunch sk_autopilot mavros.launch
+
+$ roslaunch sk_autopilot waypoint_generator.launch
+
+$ roslaunch sk_autopilot waypoint_follower.launch
