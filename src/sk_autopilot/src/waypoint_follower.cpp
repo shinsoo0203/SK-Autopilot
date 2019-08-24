@@ -50,7 +50,7 @@ public:
                 ("mavros/mission/push");
         reached_sub = nh.subscribe
                 ("mavros/mission/reached",100,&WaypointFollower::reached_cb,this);
-        mission_pub = nh.advertise<std_msgs::Bool>("sk/mission_perform",10);
+        mission_pub = nh.advertise<std_msgs::Bool>("sk/mission_start",10);
 
         offb_set_mode.request.custom_mode = "AUTO.MISSION";
         arm_cmd.request.value = true;
@@ -74,13 +74,14 @@ public:
     }
     void reached_cb(const mavros_msgs::WaypointReached::ConstPtr& msg) {
         wp_seq=msg->wp_seq;
+
         if(wp_seq==list.waypoints.size()-1) {
             ROS_INFO("Flight finished");
             finished=true;
         }else if(wp_seq==MISSION_POINT) {
           ROS_INFO("Execute mission");
             mission_perform.data=true;
-        }
+        }else mission_perform.data=false;
         mission_pub.publish(mission_perform);
     }
     void arm() {

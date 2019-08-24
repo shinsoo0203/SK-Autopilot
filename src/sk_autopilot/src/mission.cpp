@@ -16,15 +16,19 @@
 class Mission {
 protected:
     ros::NodeHandle nh;
-    ros::Subscriber perform_sub;
+    ros::Subscriber mission_start_sub;
+    ros::Publisher mission_finish_pub;
     bool mission_start;
+    std_msgs::Bool mission_finish;
 
 public:
     Mission() {
 
-      perform_sub = nh.subscribe
+      mission_start_sub = nh.subscribe
               ("sk/mission_start",10,&Mission::start_cb,this);
+      mission_finish_pub = nh.advertise<std_msgs::Bool>("sk/mission_finish",10);
       mission_start=false;
+      mission_finish.data=false;
     }
     void start_cb(const std_msgs::Bool::ConstPtr& msg) {
       if(msg->data) {
@@ -33,6 +37,12 @@ public:
     }
     bool missionStarted() {
       return mission_start;
+    }
+    void setMissionFinished() {
+      mission_finish.data=true;
+    }
+    void pubMissionFinish() {
+      mission_finish_pub.publish(mission_finish);
     }
 };
 
@@ -51,12 +61,14 @@ int main(int argc, char** argv) {
     nh.param("mission/unroll_time", unroll_time, (float)0.0);
     nh.param("mission/roll_time", roll_time, (float)0.0);
 
-    if(wiringPiSetup()==-1) {
-      ROS_INFO("Wiring connect fail");
-    }
-    softPwmCreate(SERVO,0,200);
+    ROS_INFO("Connecting WiringPi");
 
-    ROS_INFO("Waiting for mission start...");
+    //if(wiringPiSetup()==-1) {
+    //  ROS_INFO("Wiring connect fail");
+    //}
+    //softPwmCreate(SERVO,0,200);
+
+    ROS_INFO("Waiting for mission start");
 
     while(ros::ok() && !mission.missionStarted()) {
       ros::spinOnce();
@@ -70,7 +82,7 @@ int main(int argc, char** argv) {
     while(ros::ok()) {
       switch(stage) {
       case 1:
-        softPwmWrite(SERVO,24);
+        //softPwmWrite(SERVO,24);
         if(ros::Time::now().toSec()-mission_start_time.toSec()>unroll_time) {
           stage++;
           mission_start_time=ros::Time::now();
@@ -78,18 +90,20 @@ int main(int argc, char** argv) {
         }
         break;
       case 2:
-        softPwmWrite(SERVO,5);
+        //softPwmWrite(SERVO,5);
         if(ros::Time::now().toSec()-mission_start_time.toSec()>roll_time) {
           stage++;
           ROS_INFO("Mission complete");
         }
         break;
       case 3:
-        softPwmStop(SERVO);
+        //softPwmStop(SERVO);
         stage++;
+        mission.setMissionFinished();
         break;
       }
 
+        mission.pubMissionFinish();
         ros::spinOnce();
         rate.sleep();
     }
