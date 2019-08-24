@@ -1,6 +1,6 @@
 <launch>
 
-    <arg name="dist_min" default="2.0" />
+    <arg name="dist_min" default="1.5" />
 
     <node pkg="sk_autopilot" type="waypoint_follower" name="waypoint_follower" output="screen">
         <param name="dist_min" value="$(arg dist_min)"/>

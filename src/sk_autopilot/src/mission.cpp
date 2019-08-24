@@ -12,28 +12,32 @@
 #include "softPwm.h"
 
 #define SERVO 1
+#define MISSION_POINT 3
 
 class Mission {
 protected:
     ros::NodeHandle nh;
-    ros::Subscriber mission_start_sub;
+    ros::Subscriber reached_sub;
     ros::Publisher mission_finish_pub;
+    ros::Publisher drop_pub;
     bool mission_start;
     std_msgs::Bool mission_finish;
+    int wp_seq;
 
 public:
     Mission() {
-
-      mission_start_sub = nh.subscribe
-              ("sk/mission_start",10,&Mission::start_cb,this);
+      reached_sub = nh.subscribe
+              ("mavros/mission/reached",100,&Mission::reached_cb,this);
       mission_finish_pub = nh.advertise<std_msgs::Bool>("sk/mission_finish",10);
+      drop_pub = nh.advertise<std_msgs::Bool>("sk/drop",10);
       mission_start=false;
       mission_finish.data=false;
     }
-    void start_cb(const std_msgs::Bool::ConstPtr& msg) {
-      if(msg->data) {
-        mission_start=true;
-      }
+    void reached_cb(const mavros_msgs::WaypointReached::ConstPtr& msg) {
+        wp_seq=msg->wp_seq;
+        if(wp_seq==MISSION_POINT) {
+            mission_start=true;
+        }else mission_start=false;
     }
     bool missionStarted() {
       return mission_start;

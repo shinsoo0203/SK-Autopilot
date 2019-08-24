@@ -16,7 +16,7 @@
     <arg name="wp3_lon" default="127.1199211331219" />
     <arg name="wp3_alt" default="15.0" />
 
-    <arg name="accept_rad" default="1.0" />
+    <arg name="accept_rad" default="1.5" />
 
     <node pkg="sk_autopilot" type="waypoint_generator" name="waypoint_generator" output="screen">
         <param name="wp0_lat" value="$(arg wp0_lat)"/>
