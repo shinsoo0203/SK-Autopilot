@@ -1,8 +1,0 @@
-Symlinking /home/lke/SK-Autopilot/devel/share/mavros/cmake/mavrosConfig.cmake
-Symlinking /home/lke/SK-Autopilot/devel/share/mavros/cmake/mavrosConfig-version.cmake
-Symlinking /home/lke/SK-Autopilot/devel/lib/libmavros.so
-Symlinking /home/lke/SK-Autopilot/devel/lib/libmavros_plugins.so
-Symlinking /home/lke/SK-Autopilot/devel/lib/python2.7/dist-packages/mavros/__init__.py
-Symlinking /home/lke/SK-Autopilot/devel/lib/pkgconfig/mavros.pc
-Symlinking /home/lke/SK-Autopilot/devel/lib/mavros/mavros_node
-Symlinking /home/lke/SK-Autopilot/devel/lib/mavros/gcs_bridge

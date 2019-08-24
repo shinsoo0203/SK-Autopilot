@@ -1,8 +1,0 @@
-Symlinking /home/lke/SK-Autopilot/devel/./setup.sh
-Symlinking /home/lke/SK-Autopilot/devel/./setup.bash
-Symlinking /home/lke/SK-Autopilot/devel/./_setup_util.py
-Symlinking /home/lke/SK-Autopilot/devel/./env.sh
-Symlinking /home/lke/SK-Autopilot/devel/./setup.zsh
-Symlinking /home/lke/SK-Autopilot/devel/share/catkin_tools_prebuild/cmake/catkin_tools_prebuildConfig-version.cmake
-Symlinking /home/lke/SK-Autopilot/devel/share/catkin_tools_prebuild/cmake/catkin_tools_prebuildConfig.cmake
-Symlinking /home/lke/SK-Autopilot/devel/lib/pkgconfig/catkin_tools_prebuild.pc

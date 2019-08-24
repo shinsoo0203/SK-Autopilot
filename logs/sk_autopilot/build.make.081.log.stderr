@@ -1,7 +1,0 @@
-[01m[K/home/lke/SK-Autopilot/src/sk_autopilot/src/waypoint_generator.cpp:[m[K In constructor '[01m[KWaypointGenerator::WaypointGenerator()[m[K':
-[01m[K/home/lke/SK-Autopilot/src/sk_autopilot/src/waypoint_generator.cpp:44:12:[m[K [01;31m[Kerror: [m[K'[01m[Kmavros_msgs::Waypoint {aka struct mavros_msgs::Waypoint_<std::allocator<void> >}[m[K' has no member named '[01m[Kparam5[m[K'
-         wp.param5 = 0.0;
-[01;32m[K            ^[m[K
-make[2]: *** [CMakeFiles/waypoint_generator.dir/src/waypoint_generator.cpp.o] Error 1
-make[1]: *** [CMakeFiles/waypoint_generator.dir/all] Error 2
-make: *** [all] Error 2

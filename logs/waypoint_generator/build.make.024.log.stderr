@@ -1,7 +1,0 @@
-[01m[K/home/lke/SK-Autopilot/src/waypoint_generator/src/waypoint_generator.cpp:[m[K In member function '[01m[Kvoid WaypointGenerator::waypointPush()[m[K':
-[01m[K/home/lke/SK-Autopilot/src/waypoint_generator/src/waypoint_generator.cpp:43:34:[m[K [01;31m[Kerror: [m[Kexpression cannot be used as a function
-         srv.request.start_index(0);
-[01;32m[K                                  ^[m[K
-make[2]: *** [CMakeFiles/waypoint_generator.dir/src/waypoint_generator.cpp.o] Error 1
-make[1]: *** [CMakeFiles/waypoint_generator.dir/all] Error 2
-make: *** [all] Error 2

@@ -1,6 +1,0 @@
-/usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crt1.o: In function `_start':
-(.text+0x20): undefined reference to `main'
-collect2: error: ld returned 1 exit status
-make[2]: *** [/home/lke/SK-Autopilot/devel/.private/waypoint_generator/lib/waypoint_generator/waypoint_generator] 오류 1
-make[1]: *** [CMakeFiles/waypoint_generator.dir/all] 오류 2
-make: *** [all] 오류 2

@@ -1,7 +1,0 @@
-[01m[K/home/lke/SK-Autopilot/src/waypoint_generator/src/waypoint_follower.cpp:[m[K In constructor '[01m[KWaypointFollower::WaypointFollower()[m[K':
-[01m[K/home/lke/SK-Autopilot/src/waypoint_generator/src/waypoint_follower.cpp:27:46:[m[K [01;31m[Kerror: [m[Kinvalid use of non-static member function
-                 ("mavros/state", 10, state_cb);
-[01;32m[K                                              ^[m[K
-make[2]: *** [CMakeFiles/waypoint_follower.dir/src/waypoint_follower.cpp.o] Error 1
-make[1]: *** [CMakeFiles/waypoint_follower.dir/all] Error 2
-make: *** [all] Error 2
