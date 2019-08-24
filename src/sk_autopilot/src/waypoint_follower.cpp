@@ -6,18 +6,20 @@
 #include <mavros_msgs/CommandBool.h>
 #include <mavros_msgs/SetMode.h>
 #include <mavros_msgs/State.h>
+#include <std_msgs/Bool.h>
 
-#define MISSION_POINT 2
+#define MISSION_POINT 3
 
 class WaypointFollower {
 protected:
-    ros::NodeHandle m_rosNodeHandler;
+    ros::NodeHandle nh;
     ros::Subscriber m_waypointsSub;
     ros::Subscriber state_sub;
     ros::ServiceClient arming_client;
     ros::ServiceClient set_mode_client;
     ros::ServiceClient wp_client;
     ros::Subscriber reached_sub;
+    ros::Publisher mission_pub;
 
 
     mavros_msgs::WaypointList list;
@@ -26,6 +28,7 @@ protected:
     mavros_msgs::SetMode offb_set_mode;
     mavros_msgs::CommandBool arm_cmd;
 
+    std_msgs::Bool mission_perform;
     bool mission_complete;
     int mission_cnt;
     bool wp_pushed=false;
@@ -35,18 +38,19 @@ public:
     bool start;
     bool finished;
     WaypointFollower() {
-        m_waypointsSub = m_rosNodeHandler.subscribe
+        m_waypointsSub = nh.subscribe
                 ("sk/global_map",1000,&WaypointFollower::mapCb,this);
-        state_sub = m_rosNodeHandler.subscribe
+        state_sub = nh.subscribe
                 ("mavros/state", 10, &WaypointFollower::state_cb,this);
-        arming_client = m_rosNodeHandler.serviceClient<mavros_msgs::CommandBool>
+        arming_client = nh.serviceClient<mavros_msgs::CommandBool>
                 ("mavros/cmd/arming");
-        set_mode_client = m_rosNodeHandler.serviceClient<mavros_msgs::SetMode>
+        set_mode_client = nh.serviceClient<mavros_msgs::SetMode>
                 ("mavros/set_mode");
-        wp_client = m_rosNodeHandler.serviceClient<mavros_msgs::WaypointPush>
+        wp_client = nh.serviceClient<mavros_msgs::WaypointPush>
                 ("mavros/mission/push");
-        reached_sub = m_rosNodeHandler.subscribe
+        reached_sub = nh.subscribe
                 ("mavros/mission/reached",100,&WaypointFollower::reached_cb,this);
+        mission_pub = nh.advertise<std_msgs::Bool>("sk/mission_perform",10);
 
         offb_set_mode.request.custom_mode = "AUTO.MISSION";
         arm_cmd.request.value = true;
@@ -54,6 +58,7 @@ public:
         start=false;
         finished=false;
         mission_complete=false;
+        mission_perform.data=false;
     }
     void wpPush() {
         if(wp_pushed) return;
@@ -70,11 +75,13 @@ public:
     void reached_cb(const mavros_msgs::WaypointReached::ConstPtr& msg) {
         wp_seq=msg->wp_seq;
         if(wp_seq==list.waypoints.size()-1) {
-            ROS_INFO("Flight Finished");
+            ROS_INFO("Flight finished");
             finished=true;
         }else if(wp_seq==MISSION_POINT) {
-            executeMission();
+          ROS_INFO("Execute mission");
+            mission_perform.data=true;
         }
+        mission_pub.publish(mission_perform);
     }
     void arm() {
         if( current_state.mode != "AUTO.MISSION" ){
@@ -91,10 +98,6 @@ public:
             }
         }
     }
-    void executeMission() {
-
-        mission_complete=true;
-    }
     void mapCb(const mavros_msgs::WaypointList::ConstPtr& msg) {
         if(start) return;
         list=*msg;
@@ -104,7 +107,7 @@ public:
         current_state = *msg;
         bool connected = current_state.connected;
         bool armed = current_state.armed;
-        ROS_INFO("%s", armed ? "" : "DisArmed");
+        //ROS_INFO("%s", armed ? "" : "DisArmed");
     }
     bool isConnected() {
         return current_state.connected;
@@ -126,7 +129,7 @@ int main(int argc, char** argv) {
 
     while(ros::ok() && !wf.finished) {
         //wf.arm();
-        wf.wpPush();
+        //wf.wpPush();
         ros::spinOnce();
         rate.sleep();
     }

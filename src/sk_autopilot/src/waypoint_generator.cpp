@@ -9,7 +9,7 @@
 
 class WaypointGenerator {
 protected:
-    ros::NodeHandle m_rosNodeHandler;
+    ros::NodeHandle nh;
     ros::Publisher m_waypointsPub;
     mavros_msgs::WaypointList global_waypoints;
     float accept_rad;
@@ -17,15 +17,15 @@ protected:
 public:
     WaypointGenerator()
     {
-        m_waypointsPub=m_rosNodeHandler.advertise<mavros_msgs::WaypointList>("sk/global_map",1000);
+        m_waypointsPub=nh.advertise<mavros_msgs::WaypointList>("sk/global_map",1000);
 
         mavros_msgs::Waypoint wp;
 
-        m_rosNodeHandler.param("waypoint_generator/accept_rad", accept_rad, (float)0.0);
+        nh.param("waypoint_generator/accept_rad", accept_rad, (float)0.0);
 
-        m_rosNodeHandler.param("waypoint_generator/wp0_lat", wp.x_lat, 0.0);
-        m_rosNodeHandler.param("waypoint_generator/wp0_lon", wp.y_long, 0.0);
-        m_rosNodeHandler.param("waypoint_generator/wp0_alt", wp.z_alt, 0.0);
+        nh.param("waypoint_generator/wp0_lat", wp.x_lat, 0.0);
+        nh.param("waypoint_generator/wp0_lon", wp.y_long, 0.0);
+        nh.param("waypoint_generator/wp0_alt", wp.z_alt, 0.0);
         wp.frame=mavros_msgs::Waypoint::FRAME_GLOBAL_REL_ALT;
         wp.command=mavros_msgs::CommandCode::NAV_TAKEOFF;
         wp.param1=0.0; // minimum pitch (rad)
@@ -34,9 +34,9 @@ public:
         wp.autocontinue=true;
         global_waypoints.waypoints.push_back(wp);
 
-//        m_rosNodeHandler.param("waypoint_generator/restrict_zone_lat", wp.x_lat, 0.0);
-//        m_rosNodeHandler.param("waypoint_generator/restrict_zone_lon", wp.y_long, 0.0);
-//        //m_rosNodeHandler.param("waypoint_generator/restrict_zone_rad", wp.param1, 0.0); // Radius (m)
+//        nh.param("waypoint_generator/restrict_zone_lat", wp.x_lat, 0.0);
+//        nh.param("waypoint_generator/restrict_zone_lon", wp.y_long, 0.0);
+//        //nh.param("waypoint_generator/restrict_zone_rad", wp.param1, 0.0); // Radius (m)
 //        wp.frame=mavros_msgs::Waypoint::FRAME_GLOBAL_REL_ALT;
 //        wp.command=mavros_msgs::CommandCode::NAV_FENCE_CIRCLE_EXCLUSION;
 //        wp.param1 = 30.0;
@@ -47,9 +47,9 @@ public:
 //        wp.autocontinue=true;
 //        global_waypoints.waypoints.push_back(wp);
 
-        m_rosNodeHandler.param("waypoint_generator/wp1_lat", wp.x_lat, 0.0);
-        m_rosNodeHandler.param("waypoint_generator/wp1_lon", wp.y_long, 0.0);
-        m_rosNodeHandler.param("waypoint_generator/wp1_alt", wp.z_alt, 0.0);
+        nh.param("waypoint_generator/wp1_lat", wp.x_lat, 0.0);
+        nh.param("waypoint_generator/wp1_lon", wp.y_long, 0.0);
+        nh.param("waypoint_generator/wp1_alt", wp.z_alt, 0.0);
         wp.frame=mavros_msgs::Waypoint::FRAME_GLOBAL_REL_ALT;
         wp.command=mavros_msgs::CommandCode::NAV_WAYPOINT;
         wp.param1=0.0; // hold time (s)
@@ -59,23 +59,23 @@ public:
         wp.autocontinue=true;
         global_waypoints.waypoints.push_back(wp);
 
-//        m_rosNodeHandler.param("waypoint_generator/restrict_zone_lat", wp.x_lat, 0.0);
-//        m_rosNodeHandler.param("waypoint_generator/restrict_zone_lon", wp.y_long, 0.0);
+//        nh.param("waypoint_generator/restrict_zone_lat", wp.x_lat, 0.0);
+//        nh.param("waypoint_generator/restrict_zone_lon", wp.y_long, 0.0);
 //        wp.z_alt=25.0;
 //        wp.frame=mavros_msgs::Waypoint::FRAME_GLOBAL_REL_ALT;
 //        wp.command=mavros_msgs::CommandCode::NAV_WAYPOINT;
 //        wp.param1=0.0; // hold time (s)
 //        wp.param2=accept_rad; // acceptance radius (m)
-//        m_rosNodeHandler.param("waypoint_generator/restrict_zone_rad",wp.param3,(float)0.0); // 0 to pass through
+//        nh.param("waypoint_generator/restrict_zone_rad",wp.param3,(float)0.0); // 0 to pass through
 //        wp.is_current=false;
 //        wp.autocontinue=true;
 //        global_waypoints.waypoints.push_back(wp);
 
 
 
-        m_rosNodeHandler.param("waypoint_generator/wp2_lat", wp.x_lat, 0.0);
-        m_rosNodeHandler.param("waypoint_generator/wp2_lon", wp.y_long, 0.0);
-        m_rosNodeHandler.param("waypoint_generator/wp2_alt", wp.z_alt, 0.0);
+        nh.param("waypoint_generator/wp2_lat", wp.x_lat, 0.0);
+        nh.param("waypoint_generator/wp2_lon", wp.y_long, 0.0);
+        nh.param("waypoint_generator/wp2_alt", wp.z_alt, 0.0);
         wp.frame=mavros_msgs::Waypoint::FRAME_GLOBAL_REL_ALT;
         wp.command=mavros_msgs::CommandCode::NAV_LOITER_TIME;
         wp.param1=10.0; // loiter time (s)
@@ -83,9 +83,9 @@ public:
         wp.autocontinue=true;
         global_waypoints.waypoints.push_back(wp);
 
-        m_rosNodeHandler.param("waypoint_generator/wp3_lat", wp.x_lat, 0.0);
-        m_rosNodeHandler.param("waypoint_generator/wp3_lon", wp.y_long, 0.0);
-        m_rosNodeHandler.param("waypoint_generator/wp3_alt", wp.z_alt, 0.0);
+        nh.param("waypoint_generator/wp3_lat", wp.x_lat, 0.0);
+        nh.param("waypoint_generator/wp3_lon", wp.y_long, 0.0);
+        nh.param("waypoint_generator/wp3_alt", wp.z_alt, 0.0);
         wp.frame=mavros_msgs::Waypoint::FRAME_GLOBAL_REL_ALT;
         wp.command=mavros_msgs::CommandCode::NAV_WAYPOINT;
         wp.param1=0.0; // hold time (s)
@@ -95,9 +95,9 @@ public:
         wp.autocontinue=true;
         global_waypoints.waypoints.push_back(wp);
 
-        m_rosNodeHandler.param("waypoint_generator/wp0_lat", wp.x_lat, 0.0);
-        m_rosNodeHandler.param("waypoint_generator/wp0_lon", wp.y_long, 0.0);
-        m_rosNodeHandler.param("waypoint_generator/wp0_alt", wp.z_alt, 0.0);
+        nh.param("waypoint_generator/wp0_lat", wp.x_lat, 0.0);
+        nh.param("waypoint_generator/wp0_lon", wp.y_long, 0.0);
+        nh.param("waypoint_generator/wp0_alt", wp.z_alt, 0.0);
         wp.frame=mavros_msgs::Waypoint::FRAME_GLOBAL_REL_ALT;
         wp.command=mavros_msgs::CommandCode::NAV_LAND;
         wp.param1=0; // landing target number
