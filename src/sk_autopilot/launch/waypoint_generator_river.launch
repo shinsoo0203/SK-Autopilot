@@ -24,7 +24,7 @@
     <arg name="restrict_zone_lon" default="127.077670" />
     <arg name="restrict_zone_rad" default="10.0" />
 
-    <arg name="accept_rad" default="1.0" />
+    <arg name="accept_rad" default="1.5" />
 
     <node pkg="sk_autopilot" type="waypoint_generator" name="waypoint_generator" output="screen">
         <param name="wp0_lat" value="$(arg wp0_lat)"/>

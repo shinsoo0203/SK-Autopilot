@@ -1,0 +1,6 @@
+<launch>
+
+    <node pkg="sk_autopilot" type="logging" name="logging" output="screen">
+    </node>
+
+</launch>

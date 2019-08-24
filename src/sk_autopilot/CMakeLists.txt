@@ -10,6 +10,7 @@ project(sk_autopilot)
 find_package(catkin REQUIRED COMPONENTS
   roscpp
   std_msgs
+  message_generation
 )
 
 FIND_LIBRARY(WIRINGPI_LIBRARY wiringPi /home/lke/src/WiringPi-master/wiringPi)
@@ -49,11 +50,10 @@ FIND_LIBRARY(WIRINGPI_LIBRARY wiringPi /home/lke/src/WiringPi-master/wiringPi)
 ##   * add every package in MSG_DEP_SET to generate_messages(DEPENDENCIES ...)
 
 ## Generate messages in the 'msg' folder
-# add_message_files(
-#   FILES
-#   Message1.msg
-#   Message2.msg
-# )
+ add_message_files(
+   FILES
+   state.msg
+ )
 
 ## Generate services in the 'srv' folder
 # add_service_files(
@@ -70,10 +70,10 @@ FIND_LIBRARY(WIRINGPI_LIBRARY wiringPi /home/lke/src/WiringPi-master/wiringPi)
 # )
 
 ## Generate added messages and services with any dependencies listed here
-# generate_messages(
-#   DEPENDENCIES
-#   std_msgs
-# )
+ generate_messages(
+   DEPENDENCIES
+   std_msgs
+ )
 
 ################################################
 ## Declare ROS dynamic reconfigure parameters ##
@@ -133,6 +133,10 @@ add_dependencies(waypoint_follower ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_
 add_executable(mission src/mission.cpp)
 target_link_libraries(mission ${catkin_LIBRARIES} ${WIRINGPI_LIBRARY})
 add_dependencies(mission ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS} wiringPi)
+
+add_executable(logging src/logging.cpp)
+target_link_libraries(logging ${catkin_LIBRARIES})
+add_dependencies(logging ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
 ## Declare a C++ library
 # add_library(${PROJECT_NAME}
