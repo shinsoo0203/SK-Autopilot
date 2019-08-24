@@ -13,7 +13,7 @@
 class WaypointFollower {
 protected:
     ros::NodeHandle nh;
-    ros::Subscriber m_waypointsSub;
+    ros::Subscriber wp_sub;
     ros::Subscriber state_sub;
     ros::ServiceClient arming_client;
     ros::ServiceClient set_mode_client;
@@ -38,7 +38,7 @@ public:
     bool start;
     bool finished;
     WaypointFollower() {
-        m_waypointsSub = nh.subscribe
+        wp_sub = nh.subscribe
                 ("sk/global_map",1000,&WaypointFollower::mapCb,this);
         state_sub = nh.subscribe
                 ("mavros/state", 10, &WaypointFollower::state_cb,this);

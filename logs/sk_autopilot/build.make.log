@@ -1,8 +1,21 @@
-[35m[1mScanning dependencies of target waypoint_follower[0m
-[ 25%] [32mBuilding CXX object CMakeFiles/waypoint_follower.dir/src/waypoint_follower.cpp.o[0m
-[ 75%] Built target waypoint_generator
-[01m[K/home/lke/SK-Autopilot/src/sk_autopilot/src/waypoint_follower.cpp:34:20:[m[K [01;35m[Kwarning: [m[Knon-static data member initializers only available with -std=c++11 or -std=gnu++11
-     bool wp_pushed=false;
-[01;32m[K                    ^[m[K
-[100%] [32m[1mLinking CXX executable /home/lke/SK-Autopilot/devel/.private/sk_autopilot/lib/sk_autopilot/waypoint_follower[0m
-[100%] Built target waypoint_follower
+[  0%] Built target rosgraph_msgs_generate_messages_eus
+[  0%] Built target roscpp_generate_messages_py
+[  0%] Built target roscpp_generate_messages_cpp
+[  0%] Built target std_msgs_generate_messages_lisp
+[  0%] Built target roscpp_generate_messages_eus
+[  0%] Built target rosgraph_msgs_generate_messages_nodejs
+[  0%] Built target std_msgs_generate_messages_cpp
+[  0%] Built target rosgraph_msgs_generate_messages_cpp
+[  0%] Built target std_msgs_generate_messages_nodejs
+[  0%] Built target roscpp_generate_messages_nodejs
+[  0%] Built target rosgraph_msgs_generate_messages_lisp
+[  0%] Built target std_msgs_generate_messages_py
+[  0%] Built target std_msgs_generate_messages_eus
+[  0%] Built target rosgraph_msgs_generate_messages_py
+[  0%] Built target roscpp_generate_messages_lisp
+[35m[1mScanning dependencies of target mission[0m
+[ 33%] Built target waypoint_follower
+[ 50%] [32mBuilding CXX object CMakeFiles/mission.dir/src/mission.cpp.o[0m
+[ 83%] Built target waypoint_generator
+[100%] [32m[1mLinking CXX executable /home/lke/SK-Autopilot/devel/.private/sk_autopilot/lib/sk_autopilot/mission[0m
+[100%] Built target mission

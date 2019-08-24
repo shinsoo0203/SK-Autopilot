@@ -12,6 +12,9 @@ find_package(catkin REQUIRED COMPONENTS
   std_msgs
 )
 
+FIND_LIBRARY(WIRINGPI_LIBRARY wiringPi /home/lke/src/WiringPi-master/wiringPi)
+
+
 ## System dependencies are found with CMake's conventions
 # find_package(Boost REQUIRED COMPONENTS system)
 
@@ -121,11 +124,15 @@ include_directories(
 
 add_executable(waypoint_generator src/waypoint_generator.cpp)
 target_link_libraries(waypoint_generator ${catkin_LIBRARIES})
-add_dependencies(waypoint_generator waypoint_generator_generate_messages_cpp)
+add_dependencies(waypoint_generator ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
 add_executable(waypoint_follower src/waypoint_follower.cpp)
 target_link_libraries(waypoint_follower ${catkin_LIBRARIES})
-add_dependencies(waypoint_follower wwaypoint_follower_generate_messages_cpp)
+add_dependencies(waypoint_follower ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+
+add_executable(mission src/mission.cpp)
+target_link_libraries(mission ${catkin_LIBRARIES} ${WIRINGPI_LIBRARY})
+add_dependencies(mission ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS} wiringPi)
 
 ## Declare a C++ library
 # add_library(${PROJECT_NAME}
