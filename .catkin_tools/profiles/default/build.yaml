@@ -1,10 +1,7 @@
 blacklist: []
 build_space: build
 catkin_make_args: []
-cmake_args:
-- -G
-- CodeBlocks - Unix Makefiles
-- -DCMAKE_BUILD_TYPE=Debug
+cmake_args: []
 devel_layout: linked
 devel_space: devel
 extend_path: null
