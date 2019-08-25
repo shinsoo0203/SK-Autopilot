@@ -30,7 +30,7 @@ public:
               ("mavros/mission/reached",100,&Mission::reached_cb,this);
       mission_finish_pub = nh.advertise<std_msgs::Bool>("sk/mission_finish",10);
       drop_pub = nh.advertise<std_msgs::Bool>("sk/drop",10);
-      mission_start=false;
+      mission_start=true;
       mission_finish.data=false;
     }
     void reached_cb(const mavros_msgs::WaypointReached::ConstPtr& msg) {
@@ -86,7 +86,7 @@ int main(int argc, char** argv) {
     while(ros::ok()) {
       switch(stage) {
       case 1:
-        softPwmWrite(SERVO,24);
+        softPwmWrite(SERVO,5);
         if(ros::Time::now().toSec()-mission_start_time.toSec()>unroll_time) {
           stage++;
           mission_start_time=ros::Time::now();
@@ -94,13 +94,14 @@ int main(int argc, char** argv) {
         }
         break;
       case 2:
-        softPwmWrite(SERVO,5);
+        softPwmWrite(SERVO,24);
         if(ros::Time::now().toSec()-mission_start_time.toSec()>roll_time) {
           stage++;
           ROS_INFO("Mission complete");
         }
         break;
       case 3:
+        softPwmWrite(SERVO,0);
         softPwmStop(SERVO);
         stage++;
         mission.setMissionFinished();
