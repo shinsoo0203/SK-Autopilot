@@ -77,14 +77,15 @@ int main(int argc, char** argv) {
     }
     stage++;
 
+    softPwmCreate(SERVO,0,200);
     mission_start_time=ros::Time::now();
     ROS_INFO("Mission stage 1 : Unroll");
-    softPwmCreate(SERVO,0,200);
+
 
     while(ros::ok()) {
       switch(stage) {
       case 1:
-        softPwmWrite(SERVO,24);
+        softPwmWrite(SERVO,20);
         if(ros::Time::now().toSec()-mission_start_time.toSec()>unroll_time) {
           mission.setMissionPerform();
           stage++;
@@ -93,7 +94,7 @@ int main(int argc, char** argv) {
         }
         break;
       case 2:
-        softPwmWrite(SERVO,5);
+        softPwmWrite(SERVO,10);
         if(ros::Time::now().toSec()-mission_start_time.toSec()>roll_time) {
           stage++;
           ROS_INFO("Mission complete");
@@ -110,6 +111,7 @@ int main(int argc, char** argv) {
         ros::spinOnce();
         rate.sleep();
     }
+
     softPwmWrite(SERVO,14);
     softPwmStop(SERVO);
 
