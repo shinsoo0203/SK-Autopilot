@@ -18,20 +18,18 @@ class Mission {
 protected:
     ros::NodeHandle nh;
     ros::Subscriber reached_sub;
-    ros::Publisher mission_finish_pub;
-    ros::Publisher drop_pub;
+    ros::Publisher mission_perform_pub;
     bool mission_start;
-    std_msgs::Bool mission_finish;
+    std_msgs::Bool mission_perform;
     int wp_seq;
 
 public:
     Mission() {
       reached_sub = nh.subscribe
               ("mavros/mission/reached",100,&Mission::reached_cb,this);
-      mission_finish_pub = nh.advertise<std_msgs::Bool>("sk/mission_finish",10);
-      drop_pub = nh.advertise<std_msgs::Bool>("sk/drop",10);
+      mission_perform_pub = nh.advertise<std_msgs::Bool>("sk/mission_perform",10);
       mission_start=true;
-      mission_finish.data=false;
+      mission_perform.data=false;
     }
     void reached_cb(const mavros_msgs::WaypointReached::ConstPtr& msg) {
         wp_seq=msg->wp_seq;
@@ -42,11 +40,11 @@ public:
     bool missionStarted() {
       return mission_start;
     }
-    void setMissionFinished() {
-      mission_finish.data=true;
+    void setMissionPerform() {
+      mission_perform.data=true;
     }
-    void pubMissionFinish() {
-      mission_finish_pub.publish(mission_finish);
+    void pubMissionPerform() {
+      mission_perform_pub.publish(mission_perform);
     }
 };
 
@@ -70,7 +68,6 @@ int main(int argc, char** argv) {
     if(wiringPiSetup()==-1) {
       ROS_INFO("Wiring connect fail");
     }
-    softPwmCreate(SERVO,0,200);
 
     ROS_INFO("Waiting for mission start");
 
@@ -82,36 +79,39 @@ int main(int argc, char** argv) {
 
     mission_start_time=ros::Time::now();
     ROS_INFO("Mission stage 1 : Unroll");
+    softPwmCreate(SERVO,0,200);
 
     while(ros::ok()) {
       switch(stage) {
       case 1:
-        softPwmWrite(SERVO,150);
+        softPwmWrite(SERVO,24);
         if(ros::Time::now().toSec()-mission_start_time.toSec()>unroll_time) {
+          mission.setMissionPerform();
           stage++;
           mission_start_time=ros::Time::now();
           ROS_INFO("Mission stage 2 : Roll");
         }
         break;
       case 2:
-        softPwmWrite(SERVO,50);
+        softPwmWrite(SERVO,5);
         if(ros::Time::now().toSec()-mission_start_time.toSec()>roll_time) {
           stage++;
           ROS_INFO("Mission complete");
         }
         break;
       case 3:
-        softPwmWrite(SERVO,100);
-        softPwmStop(SERVO);
-        stage++;
-        mission.setMissionFinished();
+        softPwmWrite(SERVO,14);
         break;
+      default:
+        softPwmWrite(SERVO,14);
       }
 
-        mission.pubMissionFinish();
+        mission.pubMissionPerform();
         ros::spinOnce();
         rate.sleep();
     }
+    softPwmWrite(SERVO,14);
+    softPwmStop(SERVO);
 
     return 0;
 }
