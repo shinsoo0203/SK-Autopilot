@@ -87,13 +87,14 @@ int main(int argc, char** argv) {
       case 1:
         softPwmWrite(SERVO,20);
         if(ros::Time::now().toSec()-mission_start_time.toSec()>unroll_time) {
-          mission.setMissionPerform();
+          
           stage++;
           mission_start_time=ros::Time::now();
           ROS_INFO("Mission stage 2 : Roll");
         }
         break;
       case 2:
+        mission.setMissionPerform();
         softPwmWrite(SERVO,10);
         if(ros::Time::now().toSec()-mission_start_time.toSec()>roll_time) {
           stage++;
