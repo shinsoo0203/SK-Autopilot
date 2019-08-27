@@ -8,7 +8,7 @@
 1. 텔레메트리 연결 
 2. $ sudo chmod 777 /dev/ttyUSB0
 3. ./QGroundControl.AppImage
-4. 원격비행 - inchun1.plan 파일 사용 
+4. 원격비행 - SK-Autopilot/plan/inchun5.plan 파일 사용 
 
 <라즈베리파이> 
 1. 핫스팟 on - 노트북 핫스팟에 연결
@@ -29,10 +29,12 @@ $ didwn
 
 $ roscore
 
-$ roslaunch sk_autopilot mavros.launch
+$ roslaunch sk_autopilot mavros_real.launch
 
-$ roslaunch sk_autopilot waypoint_generator.launch
+$ roslaunch sk_autopilot logging.launch
 
-$ roslaunch sk_autopilot waypoint_follower.launch
+$ rosbag record /sk/state
 
+$ roslaunch sk_autopilot mission.launch
+...(After Connecting WiringPi message)
 $ rosrun my_first_python mission_start.py
