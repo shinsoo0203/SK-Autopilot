@@ -12,7 +12,7 @@
 #include "softPwm.h"
 
 #define SERVO 1
-#define MISSION_POINT 3
+#define MISSION_POINT 4
 
 class Mission {
 protected:
@@ -28,7 +28,7 @@ public:
       reached_sub = nh.subscribe
               ("mavros/mission/reached",100,&Mission::reached_cb,this);
       mission_perform_pub = nh.advertise<std_msgs::Bool>("sk/mission_perform",10);
-      mission_start=true;
+      mission_start=false;
       mission_perform.data=false;
     }
     void reached_cb(const mavros_msgs::WaypointReached::ConstPtr& msg) {
@@ -57,11 +57,14 @@ int main(int argc, char** argv) {
     ros::Time mission_start_time;
     float unroll_time;
     float roll_time;
+    float delay;
     int stage=0;
     Mission mission;
+    ros::Time perform_time;
 
     nh.param("mission/unroll_time", unroll_time, (float)0.0);
     nh.param("mission/roll_time", roll_time, (float)0.0);
+    nh.param("mission/delay", delay, (float)0.0);
 
     ROS_INFO("Connecting WiringPi");
 
@@ -88,19 +91,29 @@ int main(int argc, char** argv) {
         softPwmWrite(SERVO,20);
         if(ros::Time::now().toSec()-mission_start_time.toSec()>unroll_time) {
           mission.setMissionPerform();
+          perform_time=ros::Time::now();
           stage++;
-          mission_start_time=ros::Time::now();
-          ROS_INFO("Mission stage 2 : Roll");
         }
         break;
-      case 2:
+    case 2:
+        softPwmWrite(SERVO,14);
+        if(ros::Time::now().toSec()-perform_time.toSec()>delay) {
+            mission_start_time=ros::Time::now();
+            ROS_INFO("Mission stage 2 : Roll");
+            stage++;
+        }
+    break;
+      case 3:
+        
         softPwmWrite(SERVO,10);
         if(ros::Time::now().toSec()-mission_start_time.toSec()>roll_time) {
           stage++;
           ROS_INFO("Mission complete");
+        }else if(ros::Time::now().toSec()-mission_start_time.toSec()>delay) {
+            
         }
         break;
-      case 3:
+      case 4:
         softPwmWrite(SERVO,14);
         break;
       default:

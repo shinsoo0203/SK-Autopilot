@@ -2,10 +2,12 @@
 
     <arg name="unroll_time" default="10.0" />
     <arg name="roll_time" default="10.0" />
+    <arg name="delay" default="1.0" />
 
     <node pkg="sk_autopilot" type="mission" name="mission" output="screen">
         <param name="unroll_time" value="$(arg unroll_time)"/>
         <param name="roll_time" value="$(arg unroll_time)"/>
+        <param name="delay" value="$(arg delay)"/>
     </node>
 
 </launch>
