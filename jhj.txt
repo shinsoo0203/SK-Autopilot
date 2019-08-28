@@ -25,6 +25,8 @@ $ roscore
 
 $ roslaunch sk_autopilot mavros.launch
 
-$ roslaunch sk_autopilot waypoint_generator.launch
+$ roslaunch sk_autopilot mission.launch
 
-$ roslaunch sk_autopilot waypoint_follower.launch
+$ roslaunch sk_autopilot logging.launch
+
+$ rosbag record /sk/state

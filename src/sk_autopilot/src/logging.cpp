@@ -45,16 +45,16 @@ public:
     }
     void reached_cb(const mavros_msgs::WaypointReached::ConstPtr& msg) {
       switch(msg->wp_seq) {
-      case 0: case 1:
+      case 0: case 1: case 2:
         state.waypoint=1;
         break;
-      case 2: case 3:
+      case 3:
         state.waypoint=2;
         break;
-      case 4:
+      case 4: case 5:
         state.waypoint=3;
         break;
-      case 5: case 6:
+      case 6: case 7: case 8:
         state.waypoint=0;
         break;
       }
