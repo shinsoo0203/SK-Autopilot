@@ -35,10 +35,9 @@ $ roslaunch sk_autopilot logging.launch
 
 $ roslaunch sk_autopilot mission.launch
 
-$ roslaunch sk_autopilot logging.launch
-
 $ rosbag record /sk/state
 
 $ roslaunch sk_autopilot mission.launch
 ...(After Connecting WiringPi message)
+
 $ rosrun my_first_python mission_start.py
