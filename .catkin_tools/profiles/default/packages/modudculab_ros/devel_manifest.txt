@@ -1,8 +1,0 @@
-modudculab_ros
-/home/lke/SK-Autopilot/devel/.private/modudculab_ros/share/modudculab_ros/cmake/modudculab_rosConfig-version.cmake /home/lke/SK-Autopilot/devel/share/modudculab_ros/cmake/modudculab_rosConfig-version.cmake
-/home/lke/SK-Autopilot/devel/.private/modudculab_ros/share/modudculab_ros/cmake/modudculab_rosConfig.cmake /home/lke/SK-Autopilot/devel/share/modudculab_ros/cmake/modudculab_rosConfig.cmake
-/home/lke/SK-Autopilot/devel/.private/modudculab_ros/lib/modudculab_ros/test_setpoints_traj /home/lke/SK-Autopilot/devel/lib/modudculab_ros/test_setpoints_traj
-/home/lke/SK-Autopilot/devel/.private/modudculab_ros/lib/modudculab_ros/pub_setpoints_pos /home/lke/SK-Autopilot/devel/lib/modudculab_ros/pub_setpoints_pos
-/home/lke/SK-Autopilot/devel/.private/modudculab_ros/lib/modudculab_ros/pub_setpoints_att /home/lke/SK-Autopilot/devel/lib/modudculab_ros/pub_setpoints_att
-/home/lke/SK-Autopilot/devel/.private/modudculab_ros/lib/modudculab_ros/pub_setpoints_traj /home/lke/SK-Autopilot/devel/lib/modudculab_ros/pub_setpoints_traj
-/home/lke/SK-Autopilot/devel/.private/modudculab_ros/lib/pkgconfig/modudculab_ros.pc /home/lke/SK-Autopilot/devel/lib/pkgconfig/modudculab_ros.pc
