@@ -1,1 +1,6 @@
+<<<<<<< HEAD
 /home/sk/SK-Autopilot/devel/./cmake.lock 23
+=======
+/home/lke/SK-Autopilot/devel/./cmake.lock 8
+/home/sk/SK-Autopilot/devel/./cmake.lock 5
+>>>>>>> 09a7d69468eb3b6a3b80a3105f871089bfa456e0

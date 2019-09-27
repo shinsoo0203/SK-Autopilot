@@ -10,8 +10,7 @@
 #include <sensor_msgs/NavSatFix.h>
 #include <std_msgs/Bool.h>
 #include "sk_autopilot/state.h"
-
-#define MISSION_POINT 3
+#include <iomanip>
 
 class Logging {
 protected:
@@ -54,18 +53,21 @@ public:
       case 4: case 5:
         state.waypoint=3;
         break;
-      case 6: case 7: case 8:
+      case 6: case 7:
         state.waypoint=0;
         break;
       }
     }
     void time_cb(const sensor_msgs::TimeReference::ConstPtr& msg) {
-      state.timestamp = msg->time_ref;
+      state.gps_time = msg->time_ref;
     }
     void gps_cb(const sensor_msgs::NavSatFix::ConstPtr& msg) {
-      state.latitude=msg->latitude;
-      state.longitude=msg->longitude;
-      state.altitude=msg->altitude;
+//      state.latitude = int(msg->latitude / 0.000001) * 1000000;
+//      state.longitude = int(msg->longitude / 0.000001) * 1000000;
+//      state.altitude = int(msg->altitude / 0.1) * 10;
+      state.latitude = msg->latitude;
+      state.longitude = msg->longitude;
+      state.altitude = msg->altitude;
     }
     void pub() {
       state_pub.publish(state);
@@ -76,7 +78,7 @@ int main(int argc, char** argv) {
 
     ros::init(argc, argv, "logging");
     ros::Time::init();
-    ros::Rate rate(10);
+    ros::Rate rate(1);
     Logging logging;
     while(ros::ok()) {
         logging.pub();
