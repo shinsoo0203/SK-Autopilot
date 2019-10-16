@@ -95,7 +95,6 @@ int main(int argc, char** argv) {
     mission_start_time=ros::Time::now();
     ROS_INFO("Mission stage 1 : Unroll");
 
-
     while(ros::ok()) {
       switch(stage) {
       case 1:
