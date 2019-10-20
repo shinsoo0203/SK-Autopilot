@@ -34,7 +34,7 @@ int main(int argc, char **argv)
 
 
   nh.param("pub_setpoints_traj/wn", wn, 1.0);
-  nh.param("pub_setpoints_traj/r", r, 1.0);
+  nh.param("pub_setpoints_traj/r", r, 5.0);
   // wait for FCU connection
   while(ros::ok() && current_state.connected){
     ros::spinOnce();
