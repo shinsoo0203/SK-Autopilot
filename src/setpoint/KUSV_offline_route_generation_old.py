@@ -104,13 +104,16 @@ bCfg_is_export_heading_curvature_info = True
 
 
 # Input output folder path
-InputOsmPath = ''
+# InputOsmPath = "/home/lke/SVE-Jocar/src/computing/mission/map_manager/src/osmfiles/final_map_raw.osm"
 root_tk = tk.Tk()
 root_tk.withdraw()
 
-InputOsmPath = tkFileDialog.askopenfilename(filetypes =(("osm File", "*.osm"),("All Files","*.*")),
+InputOsmPath = tkFileDialog.askopenfilename(initialdir = "/",filetypes =(("osm File", "*.osm"),("All Files","*.*")),
                                           title = "Choose a file."
                                           )
+
+#InputOsmPath = '/home/lke/SK-Autopilot/src/setpoint/osmfiles/konkuk_wp'
+
 if InputOsmPath == '':
     sys.exit("[1. OSM Import] No import file!")
 
