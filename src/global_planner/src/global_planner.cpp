@@ -23,12 +23,13 @@ private:
   ros::Subscriber sub_local_pose;
 
   ros::Publisher pub_marker_array;
-  ros::Publisher pub_curr_wp;
   ros::Publisher pub_pose_marker;
+  ros::Publisher pub_curr_wp;
+  ros::Publisher pub_local_wp;
 
   sk_msgs::WaypointArray global_wp;
   sk_msgs::WaypointArray local_wp;
-  std_msgs::Int32 current_wp;
+  std_msgs::Int32 curr_wp;
   geometry_msgs::Point global_pose;
   geometry_msgs::PoseStamped local_pose;
   geometry_msgs::Point tmp_local_pose;
@@ -42,7 +43,7 @@ private:
 public:
   GlobalPlanner() {
     sub_global_waypoints = nh.subscribe(
-          "/sk/global_waypoints", 10, &GlobalPlanner::globalWpCb, this);
+          "/global_waypoints_latlon", 10, &GlobalPlanner::globalWpCb, this);
     sub_global_pose = nh.subscribe(
           "/mavros/global_position/global", 10, &GlobalPlanner::globalPoseCb, this);
     sub_local_pose = nh.subscribe(
@@ -52,15 +53,19 @@ public:
           "/local_waypoints_marker", 10);
     pub_pose_marker = nh.advertise<visualization_msgs::Marker>(
           "/pose_marker", 10);
+    pub_curr_wp = nh.advertise<std_msgs::Int32>(
+          "/current_waypoint", 10);
+    pub_local_wp = nh.advertise<sk_msgs::WaypointArray>(
+          "/local_waypoints", 10);
 
     received_global_wp = false;
     received_global_pose = false;
     received_local_pose = false;
   }
-  bool WpExist() {
+  bool wpExist() {
     return received_global_wp;
   }
-  bool PoseExist() {
+  bool poseExist() {
     return (received_global_pose && received_local_pose);
   }
   void initCurrWp() {
@@ -74,13 +79,35 @@ public:
         min_idx=i;
       }
     }
-    current_wp.data=min_idx;
+    curr_wp.data=min_idx;
     if(min_dist>=100.0) {
       cout<<"Too far from the point!!"<<endl;
     }else {
-      cout<<"curr_wp : "<<current_wp.data<<endl;
-      //pub_curr_wp.publish(current_wp);
+      cout<<"curr_wp : "<<curr_wp.data<<endl;
+      pub_curr_wp.publish(curr_wp);
     }
+  }
+  void findCurrWp() {
+      int min_idx=0;
+      double min_dist=100.0;
+      double dist;
+      for(int i=0;i<local_wp.wp.size();i++) {
+          dist=sqrt(pow(local_wp.wp[i].point.x-local_pose.pose.position.x,2)
+                    +pow(local_wp.wp[i].point.y-local_pose.pose.position.y,2));
+          if(dist<min_dist) {
+              min_dist=dist;
+              min_idx=i;
+          }
+      }
+      if(min_dist>=20.0) {
+          initCurrWp();
+          return;
+      }
+      curr_wp.data=min_idx;
+      cout<<"curr_wp : "<<curr_wp.data<<endl;
+      pub_curr_wp.publish(curr_wp);
+      pub_local_wp.publish(global_wp);
+
   }
   void globalWpCb(const sk_msgs::WaypointArray::ConstPtr& msg) {
     if(received_global_wp || !received_local_pose) return;
@@ -107,7 +134,7 @@ public:
       cout<<local_wp.wp[i].point.x<<", "<<local_wp.wp[i].point.y<<endl;
     }
 
-    cout<<"Move local waypoint success."<<endl;
+    cout<<"Successfully moved local waypoints."<<endl;
   }
   void localPoseCb(const geometry_msgs::PoseStamped::ConstPtr& msg) {
 
@@ -203,7 +230,7 @@ int main(int argc, char **argv) {
 
   cout<<"Waiting for global waypoints and pose..."<<endl;
 
-  while(ros::ok() && (!gp.WpExist() || !gp.PoseExist()))
+  while(ros::ok() && (!gp.wpExist() || !gp.poseExist()))
   {
     ros::spinOnce();
     loop_rate.sleep();
@@ -214,6 +241,7 @@ int main(int argc, char **argv) {
   while (ros::ok()) {
     gp.markOsmWp();
     gp.markPose();
+    gp.findCurrWp();
     ros::spinOnce();
     loop_rate.sleep();
   }

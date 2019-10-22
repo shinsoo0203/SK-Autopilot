@@ -20,7 +20,7 @@ wpArr = WaypointArray()
 
 def core():
     rospy.init_node('map_loader')
-    wpArr_pub = rospy.Publisher('/sk/global_waypoints',WaypointArray,queue_size=10)
+    wpArr_pub = rospy.Publisher('/global_waypoints_latlon',WaypointArray,queue_size=10)
     rate = rospy.Rate(1)
 
     importOsmFile()
