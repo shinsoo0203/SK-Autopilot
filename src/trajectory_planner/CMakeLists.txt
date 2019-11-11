@@ -120,6 +120,10 @@ include_directories(
   ${catkin_INCLUDE_DIRS}
 )
 
+add_executable(trajectory_planner src/trajectory_planner.cpp)
+add_dependencies(trajectory_planner  ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+target_link_libraries(trajectory_planner ${catkin_LIBRARIES})
+
 ## Declare a C++ library
 # add_library(${PROJECT_NAME}
 #   src/${PROJECT_NAME}/trajectory_planner.cpp

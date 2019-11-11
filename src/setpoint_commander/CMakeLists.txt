@@ -120,6 +120,10 @@ include_directories(
   ${catkin_INCLUDE_DIRS}
 )
 
+add_executable(setpoint_commander src/setpoint_commander.cpp)
+add_dependencies(setpoint_commander  ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+target_link_libraries(setpoint_commander ${catkin_LIBRARIES})
+
 ## Declare a C++ library
 # add_library(${PROJECT_NAME}
 #   src/${PROJECT_NAME}/setpoint_commander.cpp
