@@ -106,7 +106,7 @@ public:
       curr_wp.data=min_idx;
       cout<<"curr_wp : "<<curr_wp.data<<endl;
       pub_curr_wp.publish(curr_wp);
-      pub_local_wp.publish(global_wp);
+      pub_local_wp.publish(local_wp);
 
   }
   void globalWpCb(const sk_msgs::WaypointArray::ConstPtr& msg) {
@@ -118,7 +118,7 @@ public:
     received_global_wp = true;
   }
   void globalPoseCb(const sensor_msgs::NavSatFix::ConstPtr& msg) {
-    if(received_global_wp) return;
+    if(received_global_pose) return;
     global_pose.x = msg->longitude;
     global_pose.y = msg->latitude;
     ENU_Conversion::enuConversion(global_pose, &tmp_local_pose);
@@ -131,6 +131,7 @@ public:
     for(int i=0;i<local_wp.wp.size();i++) {
       local_wp.wp[i].point.x += x_diff;
       local_wp.wp[i].point.y += y_diff;
+      local_wp.wp[i].point.z = 10;
       cout<<local_wp.wp[i].point.x<<", "<<local_wp.wp[i].point.y<<endl;
     }
 

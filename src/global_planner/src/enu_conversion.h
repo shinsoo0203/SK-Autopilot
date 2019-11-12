@@ -46,6 +46,7 @@ public:
 
     local_pose->x = (temp_lon - m_origin_lon_rad)*(NormalRadius(m_a, m_b, temp_lat)*cos(temp_lat));
     local_pose->y = (temp_lat - m_origin_lat_rad)*MeridionalRadius(m_a, m_b, temp_lat);
+    local_pose->z = global_pose.z;
 
     ROS_INFO("east : %f, north : %f", local_pose->x, local_pose->y);
     //ROS_INFO("longitude: %f, latitude: %f", globalArr.point[i_point].x, globalArr.point[i_point].y);

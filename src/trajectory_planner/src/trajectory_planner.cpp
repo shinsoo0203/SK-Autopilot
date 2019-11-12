@@ -81,6 +81,8 @@ int main(int argc, char **argv) {
     loop_rate.sleep();
   }
 
+  cout<<"Received waypoints."<<endl;
+
   while (ros::ok()) {
     tp.setTargetWp();
     ros::spinOnce();
