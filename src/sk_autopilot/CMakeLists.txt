@@ -132,7 +132,7 @@ add_dependencies(waypoint_follower ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_
 
 add_executable(mission src/mission.cpp)
 target_link_libraries(mission ${catkin_LIBRARIES} ${WIRINGPI_LIBRARY})
-add_dependencies(mission ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS} wiringPi)
+add_dependencies(mission ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS} wiringpi)
 
 add_executable(logging src/logging.cpp)
 target_link_libraries(logging ${catkin_LIBRARIES})
