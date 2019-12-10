@@ -4,7 +4,7 @@ catkin_make_args: []
 cmake_args:
 - -G
 - CodeBlocks - Unix Makefiles
-- -DCMAKE_BUILD_TYPE=Debug
+- -DCMAKE_BUILD_TYPE=Release
 devel_layout: merged
 devel_space: devel
 extend_path: null

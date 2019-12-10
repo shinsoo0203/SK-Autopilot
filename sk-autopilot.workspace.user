@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
-<!-- Written by QtCreator 4.9.2, 2019-11-22T00:50:23. -->
+<!-- Written by QtCreator 4.9.2, 2019-12-10T21:46:33. -->
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
@@ -65,7 +65,7 @@
    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">Desktop</value>
    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">Desktop</value>
    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">{bd3ba2d1-3f46-44d0-a89a-3b111c0b64b8}</value>
-   <value type="int" key="ProjectExplorer.Target.ActiveBuildConfiguration">0</value>
+   <value type="int" key="ProjectExplorer.Target.ActiveBuildConfiguration">1</value>
    <value type="int" key="ProjectExplorer.Target.ActiveDeployConfiguration">0</value>
    <value type="int" key="ProjectExplorer.Target.ActiveRunConfiguration">0</value>
    <valuemap type="QVariantMap" key="ProjectExplorer.Target.BuildConfiguration.0">
@@ -121,11 +121,11 @@
      <value type="QString">ROS_DISTRO=melodic</value>
      <value type="QString">ROS_ETC_DIR=/opt/ros/melodic/etc/ros</value>
      <value type="QString">ROS_MASTER_URI=http://localhost:11311</value>
-     <value type="QString">ROS_PACKAGE_PATH=/home/lke/src/SK-Autopilot/src/map_loader:/home/lke/src/SK-Autopilot/src/setpoint:/home/lke/src/SK-Autopilot/src/sk_autopilot:/home/lke/src/SK-Autopilot/src/sk_msgs:/home/lke/src/SK-Autopilot/src/global_planner:/home/lke/src/SK-Autopilot/src/setpoint_commander:/home/lke/src/SK-Autopilot/src/trajectory_planner:/home/lke/src/SK-Autopilot/src/ydlidar_ros:/opt/ros/melodic/share</value>
+     <value type="QString">ROS_PACKAGE_PATH=/home/lke/src/SK-Autopilot/src/lidar_detector:/home/lke/src/SK-Autopilot/src/map_loader:/home/lke/src/SK-Autopilot/src/setpoint:/home/lke/src/SK-Autopilot/src/sk_autopilot:/home/lke/src/SK-Autopilot/src/sk_msgs:/home/lke/src/SK-Autopilot/src/global_planner:/home/lke/src/SK-Autopilot/src/setpoint_commander:/home/lke/src/SK-Autopilot/src/tflite_detector:/home/lke/src/SK-Autopilot/src/trajectory_planner:/home/lke/src/SK-Autopilot/src/ydlidar-master:/opt/ros/melodic/share</value>
      <value type="QString">ROS_PYTHON_VERSION=2</value>
      <value type="QString">ROS_ROOT=/opt/ros/melodic/share/ros</value>
      <value type="QString">ROS_VERSION=1</value>
-     <value type="QString">SHLVL=117</value>
+     <value type="QString">SHLVL=164</value>
      <value type="QString">TERM=xterm</value>
      <value type="QString">_=/usr/bin/env</value>
     </valuelist>
@@ -177,7 +177,25 @@
     </valuemap>
     <value type="int" key="ProjectExplorer.BuildConfiguration.BuildStepListCount">2</value>
     <value type="bool" key="ProjectExplorer.BuildConfiguration.ClearSystemEnvironment">false</value>
-    <valuelist type="QVariantList" key="ProjectExplorer.BuildConfiguration.UserEnvironmentChanges"/>
+    <valuelist type="QVariantList" key="ProjectExplorer.BuildConfiguration.UserEnvironmentChanges">
+     <value type="QString">CMAKE_PREFIX_PATH=/home/lke/src/SK-Autopilot/devel:/opt/ros/melodic</value>
+     <value type="QString">LD_LIBRARY_PATH=/home/lke/src/SK-Autopilot/devel/lib:/opt/ros/melodic/lib</value>
+     <value type="QString">PATH=/opt/ros/melodic/bin:/home/lke/gcc-arm-none-eabi-7-2017-q4-major/bin:/home/lke/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin</value>
+     <value type="QString">PKG_CONFIG_PATH=/home/lke/src/SK-Autopilot/devel/lib/pkgconfig:/opt/ros/melodic/lib/pkgconfig</value>
+     <value type="QString">PWD=/home/lke/src/SK-Autopilot</value>
+     <value type="QString">PYTHONPATH=/home/lke/src/SK-Autopilot/devel/lib/python2.7/dist-packages:/opt/ros/melodic/lib/python2.7/dist-packages</value>
+     <value type="QString">ROSLISP_PACKAGE_DIRECTORIES=/home/lke/src/SK-Autopilot/devel/share/common-lisp</value>
+     <value type="QString">ROS_DISTRO=melodic</value>
+     <value type="QString">ROS_ETC_DIR=/opt/ros/melodic/etc/ros</value>
+     <value type="QString">ROS_MASTER_URI=http://localhost:11311</value>
+     <value type="QString">ROS_PACKAGE_PATH=/home/lke/src/SK-Autopilot/src/map_loader:/home/lke/src/SK-Autopilot/src/setpoint:/home/lke/src/SK-Autopilot/src/sk_autopilot:/home/lke/src/SK-Autopilot/src/sk_msgs:/home/lke/src/SK-Autopilot/src/global_planner:/home/lke/src/SK-Autopilot/src/lidar_detector:/home/lke/src/SK-Autopilot/src/setpoint_commander:/home/lke/src/SK-Autopilot/src/tflite_detector:/home/lke/src/SK-Autopilot/src/trajectory_planner:/home/lke/src/SK-Autopilot/src/ydlidar-master:/opt/ros/melodic/share</value>
+     <value type="QString">ROS_PYTHON_VERSION=2</value>
+     <value type="QString">ROS_ROOT=/opt/ros/melodic/share/ros</value>
+     <value type="QString">ROS_VERSION=1</value>
+     <value type="QString">SHLVL=127</value>
+     <value type="QString">TERM=xterm</value>
+     <value type="QString">_=/usr/bin/env</value>
+    </valuelist>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">Release</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">Release</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">ROSProjectManager.ROSBuildConfiguration</value>
