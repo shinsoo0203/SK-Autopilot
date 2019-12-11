@@ -56,6 +56,7 @@ find_package(catkin REQUIRED COMPONENTS
        WaypointArray.msg
        Object.msg
        ObjectArray.msg
+       VisionDetectCmd.msg
  )
 
 ## Generate services in the 'srv' folder
