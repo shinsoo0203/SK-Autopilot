@@ -62,6 +62,7 @@ private:
     ros::Publisher pub_shape;
     ros::Publisher pub_origin;
     ros::Publisher pub_object;
+    ros::Publisher pub_object_marker;
 
     ros::Subscriber ydlidar_sub;
     ros::NodeHandle nh;
@@ -72,6 +73,7 @@ private:
     sk_msgs::ObjectArray m_arrObjects;
     visualization_msgs::Marker m_Origin;
     visualization_msgs::MarkerArray m_arrShapes;
+    visualization_msgs::MarkerArray m_arrObjects_marker;
 
     std_msgs::Header m_velodyne_header;
     std::vector<RGB> m_globalRGB;

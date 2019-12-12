@@ -37,7 +37,7 @@ def importOsmFile():
     script_dir = os.path.dirname(__file__)
     #rel_path = 'osmfiles/final_map_2.osm' # final
     #rel_path = 'osmfiles/preliminary_map.osm' # preliminary
-    rel_path = 'osmfiles/konkuk_wp_20191810_124227_route_gen.osm'
+    rel_path = 'osmfiles/konkuk_wp2_20191212_135205_route_gen.osm'
     InputOsmPath=os.path.join(script_dir, rel_path)
 
     if bCfg_ImportDebug:

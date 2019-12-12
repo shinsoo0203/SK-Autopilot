@@ -4,10 +4,14 @@
 #include <mavros_msgs/SetMode.h>
 #include <mavros_msgs/State.h>
 #include <std_msgs/Int32.h>
+#include <tf/tf.h>
 #include <iostream>
 #include "math.h"
 #include "sk_msgs/Waypoint.h"
 #include "sk_msgs/WaypointArray.h"
+
+#define PI 3.14159265359
+
 using namespace std;
 
 class SetpointCommander {
@@ -16,6 +20,7 @@ private:
 
     ros::Subscriber state_sub;
     ros::Subscriber target_wp_sub;
+    ros::Subscriber current_wp_sub;
     ros::Subscriber local_wp_sub;
 
     ros::Publisher local_pos_pub;
@@ -32,15 +37,18 @@ private:
     mavros_msgs::CommandBool arm_cmd;
     geometry_msgs::PoseStamped pose;
     sk_msgs::WaypointArray local_wp;
-    int target_wp;
+    sk_msgs::Waypoint target_wp;
+    int current_wp;
 
 public:
     ros::Time last_request;
     SetpointCommander() {
         state_sub = nh.subscribe<mavros_msgs::State>
                 ("mavros/state", 10, &SetpointCommander::stateCb, this);
-        target_wp_sub = nh.subscribe<std_msgs::Int32>
+        target_wp_sub = nh.subscribe<sk_msgs::Waypoint>
                 ("/target_waypoint", 10, &SetpointCommander::targetWpCb, this);
+        current_wp_sub = nh.subscribe<std_msgs::Int32>
+                ("/current_waypoint", 1, &SetpointCommander::currentWpCb, this);
         local_wp_sub = nh.subscribe(
                     "/local_waypoints", 10, &SetpointCommander::localWpCb, this);
 
@@ -55,7 +63,8 @@ public:
         last_request = ros::Time::now();
         offb_set_mode.request.custom_mode = "OFFBOARD";
         arm_cmd.request.value = true;
-        target_wp = 0;
+        current_wp = 0;
+        target_wp = sk_msgs::Waypoint();
         received_local_wp = false;
     }
     bool localWpExist() {
@@ -80,8 +89,11 @@ public:
     void stateCb(const mavros_msgs::State::ConstPtr& msg){
         current_state = *msg;
     }
-    void targetWpCb(const std_msgs::Int32::ConstPtr& msg) {
-        target_wp = msg->data;
+    void targetWpCb(const sk_msgs::Waypoint::ConstPtr& msg) {
+        target_wp = *msg;
+    }
+    void currentWpCb(const std_msgs::Int32::ConstPtr& msg) {
+        current_wp = msg->data;
     }
     void localWpCb(const sk_msgs::WaypointArray::ConstPtr& msg) {
         if(received_local_wp) return;
@@ -109,10 +121,16 @@ public:
         }
     }
     void setpoint() {
-        //target_wp=50;
-        pose.pose.position.x = local_wp.wp[target_wp].point.x;
-        pose.pose.position.y = local_wp.wp[target_wp].point.y;
-        pose.pose.position.z = local_wp.wp[target_wp].point.z;
+        pose.header.frame_id = "local_origin";
+        pose.header.stamp = ros::Time::now();
+        pose.pose.position.x = target_wp.point.x;
+        pose.pose.position.y = target_wp.point.y;
+        pose.pose.position.z = target_wp.point.z;
+        pose.pose.orientation.z = double(atan2(local_wp.wp[current_wp+2].point.y - local_wp.wp[current_wp].point.y,
+                                        local_wp.wp[current_wp+2].point.x - local_wp.wp[current_wp].point.x)) - PI/2;
+        //pose.pose.orientation.z = PI/2;
+        pose.pose.orientation.w = 1.0;
+        //ROS_INFO("%f",pose.pose.orientation.z);
 
         local_pos_pub.publish(pose);
     }

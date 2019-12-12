@@ -21,6 +21,7 @@ private:
     ros::Subscriber sub_global_waypoints;
     ros::Subscriber sub_global_pose;
     ros::Subscriber sub_local_pose;
+    ros::Subscriber sub_imu;
 
     ros::Publisher pub_marker_array;
     ros::Publisher pub_pose_marker;
@@ -33,6 +34,7 @@ private:
     geometry_msgs::Point global_pose;
     geometry_msgs::PoseStamped local_pose;
     geometry_msgs::Point tmp_local_pose;
+    sensor_msgs::Imu imu;
     visualization_msgs::Marker pose_marker;
     tf::TransformBroadcaster tf_broadcaster;
 
@@ -48,6 +50,8 @@ public:
                     "/mavros/global_position/global", 10, &GlobalPlanner::globalPoseCb, this);
         sub_local_pose = nh.subscribe(
                     "/mavros/local_position/pose", 10, &GlobalPlanner::localPoseCb, this);
+        sub_imu = nh.subscribe(
+                    "/mavros/imu/data",10,&GlobalPlanner::imuCb,this);
 
         pub_marker_array = nh.advertise<visualization_msgs::MarkerArray>(
                     "/local_waypoints_marker", 10);
@@ -104,10 +108,13 @@ public:
             return;
         }
         curr_wp.data=min_idx;
-        cout<<"curr_wp : "<<curr_wp.data<<endl;
+        //cout<<"curr_wp : "<<curr_wp.data<<endl;
         pub_curr_wp.publish(curr_wp);
         pub_local_wp.publish(local_wp);
 
+    }
+    void imuCb(const sensor_msgs::Imu::ConstPtr& msg) {
+        imu = *msg;
     }
     void globalWpCb(const sk_msgs::WaypointArray::ConstPtr& msg) {
         if(received_global_wp || !received_local_pose) return;
@@ -142,6 +149,7 @@ public:
         local_pose = *msg;
         tf::Quaternion q;
         q.setRPY(local_pose.pose.orientation.x, local_pose.pose.orientation.y, local_pose.pose.orientation.z);
+        ROS_INFO("%f, %f, %f",local_pose.pose.orientation.x, local_pose.pose.orientation.y, local_pose.pose.orientation.z);
 
         tf::Transform transform;
         transform.setOrigin(tf::Vector3(local_pose.pose.position.x, local_pose.pose.position.y, local_pose.pose.position.z));
@@ -196,7 +204,7 @@ public:
         marker.color.b = 0.9f;
         marker.color.a = 0.7;
         marker.scale.x = 0.5;
-        marker.lifetime = ros::Duration(0.1);
+        marker.lifetime = ros::Duration(0);
 
         geometry_msgs::Point prevPoint;
         bool first = true;

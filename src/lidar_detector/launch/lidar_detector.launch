@@ -1,4 +1,4 @@
-￣<launch>
+<launch>
         <arg name="leaf_size" default="1.0" />
         <arg name="radius_search" default="0.5" />
 
