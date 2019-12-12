@@ -71,7 +71,7 @@ public:
         received_curr_wp = false;
         look_ahead = 30;
         finished = false;
-
+        selected_idx = num_of_trajectory/2;
         for(int i=0;i<num_of_trajectory;i++) {
             fcu_traj_vec.push_back(sk_msgs::WaypointArray());
         }
@@ -115,7 +115,6 @@ public:
     }
     void objectCb(const sk_msgs::ObjectArray::ConstPtr& msg) {
         object_arr_fcu = *msg;
-
     }
     void generateTrajectory() {
         sk_msgs::WaypointArray traj;
@@ -147,12 +146,51 @@ public:
         }
         //ROS_INFO("%d",fcu_traj_vec.size());
     }
-    void selectTrajectory() {
-        selected_idx = num_of_trajectory/2;
-
-        if(curr_wp >=150 && curr_wp<=250) {
-            selected_idx = 0;
+    void checkCollision() {
+        //selected_idx = fcu_traj_vec.size()/2;
+        std::vector<bool> collision_vec;
+        for(int i=0;i<fcu_traj_vec.size();i++) {
+            bool collision = false;
+            collision_vec.push_back(collision);
         }
+
+        for(int i=0;i<fcu_traj_vec.size();i++) {
+            for(const auto& wp : fcu_traj_vec[i].wp) {
+                for(const auto& object : object_arr_fcu.objects) {
+                    if(sqrt(pow(wp.point.x - object.pose.position.x,2) +
+                            pow(wp.point.y - object.pose.position.y,2)) < 2.0) {
+                        collision_vec[i]=true;
+                        break;
+                    }
+                }
+                if(collision_vec[i]) break;
+            }
+        }
+
+        bool empty=true;
+        for(const auto& collision : collision_vec) {
+            if(collision) empty=false;
+            std::cout<<collision<<endl;
+        }
+        if(empty) {
+            selected_idx = fcu_traj_vec.size()/2;
+            return;
+        }
+
+        for(int i=0;i<fcu_traj_vec.size();i++) {
+            if(selected_idx+i >= fcu_traj_vec.size()) return;
+            if(collision_vec[selected_idx+i] == false) {
+                selected_idx = selected_idx + i;
+                break;
+            }
+            if(selected_idx-i < 0) return;
+            if(collision_vec[selected_idx-i] == false) {
+                selected_idx = selected_idx - i;
+                break;
+            }
+        }
+    }
+    bool checkCollision(const sk_msgs::ObjectArray& object_arr_fcu, const sk_msgs::WaypointArray& fcu_traj) {
 
     }
     void setTargetWp() {
@@ -239,7 +277,7 @@ public:
     }
     void core() {
         generateTrajectory();
-        selectTrajectory();
+        checkCollision();
         setTargetWp();
         markTrajArr();
         checkFinish();

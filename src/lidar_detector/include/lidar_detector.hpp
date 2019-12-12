@@ -87,6 +87,7 @@ private:
     double m_dClusterMaxSize;
     double m_dRemoveSideRange;
     double m_fRadius;
+    int k = 0;
 
     std::vector<clusterPtr> m_OriginalClusters;
 

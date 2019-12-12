@@ -231,7 +231,14 @@ void lidar_detector::displayShape (const std::vector<clusterPtr> pVecClusters)
 
             m_arrShapes.markers.push_back(shape);
 
-            object.pose.position = pCluster->m_center.position;
+            // original
+            // object.pose.position = pCluster->m_center.position;
+
+            // tmp
+            object.pose.position.x = pCluster->m_center.position.y;
+            object.pose.position.y = -pCluster->m_center.position.x;
+            object.pose.position.x -= 0.02*k;
+            object.pose.position.y -= 0.02*k;
             m_arrObjects.objects.push_back(object);
 
 //            shape.scale.x = 0.0;
@@ -251,6 +258,7 @@ void lidar_detector::displayShape (const std::vector<clusterPtr> pVecClusters)
         }
         objectNumber++;
     }
+    k++;
 
     visualization_msgs::Marker object_marker;
 
@@ -268,12 +276,12 @@ void lidar_detector::displayShape (const std::vector<clusterPtr> pVecClusters)
     object_marker.pose.orientation.z = 0.0;
     object_marker.pose.orientation.w = 1.0;
 
-    object_marker.scale.x = 0.3;
-    object_marker.scale.y = 0.3;
-    object_marker.scale.z = 0.3;
+    object_marker.scale.x = 0.5;
+    object_marker.scale.y = 0.5;
+    object_marker.scale.z = 0.5;
 
     object_marker.color.r = 0.0f;
-    object_marker.color.g = 0.0f;
+    object_marker.color.g = 1.0f;
     object_marker.color.b = 1.0f;
     object_marker.color.a = 1.0;
     object_marker.lifetime = ros::Duration();

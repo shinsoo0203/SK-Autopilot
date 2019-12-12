@@ -130,7 +130,7 @@ public:
                                         local_wp.wp[current_wp+2].point.x - local_wp.wp[current_wp].point.x)) - PI/2;
         //pose.pose.orientation.z = PI/2;
         pose.pose.orientation.w = 1.0;
-        //ROS_INFO("%f",pose.pose.orientation.z);
+        ROS_INFO("%f",pose.pose.orientation.z);
 
         local_pos_pub.publish(pose);
     }
