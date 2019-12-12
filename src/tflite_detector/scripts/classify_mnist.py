@@ -22,6 +22,9 @@ import numpy as np
 from edgetpu.basic.basic_engine import BasicEngine
 from PIL import Image
 
+value =[3, 2, 1, 18, 4, 8, 11, 0, 61, 7]
+i = 0
+
 def display(img):
     print('+----------------------------+')
     for y in range(0, 28):
@@ -54,15 +57,19 @@ def main():
     # Initialize engine.
     engine = BasicEngine(args.model)
 
+    global i
+
     # get mnist data.
     if args.data_set == 'train':
-        index = 61 #random.randint(0, len(x_train) - 1)
+        index = value[i] #random.randint(0, len(x_train) - 1)
         img = x_train[index]
         label = t_train[index]
     else:
-        index = 61 #random.randint(0, len(x_test) - 1)
+        index = value[i] #random.randint(0, len(x_test) - 1)
         img = x_test[index]
         label = t_test[index]
+
+    i = i + 1
 
     # display image.
     if args.display:
@@ -83,6 +90,8 @@ def main():
     print('Output tensor: ', result[1])
     print('Inference: ', np.argmax(result[1]))
     print('Label    : ', label)
+    time.sleep(1)
 
 if __name__ == '__main__':
-  main()
+    for i in range(0,10) :
+        main()
