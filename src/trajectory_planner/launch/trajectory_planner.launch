@@ -1,0 +1,9 @@
+<launch>
+        <arg name="trajectory_interval" default="2.0" />
+        <arg name="num_of_trajectory" default="5" />
+
+        <node pkg="trajectory_planner" type="trajectory_planner" name="trajectory_planner" output="screen">
+                <param name="trajectory_interval" value="$(arg trajectory_interval)"/>
+                <param name="num_of_trajectory" value="$(arg num_of_trajectory)"/>
+        </node>
+</launch>

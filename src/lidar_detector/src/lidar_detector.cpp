@@ -18,6 +18,7 @@ lidar_detector::lidar_detector()
     pub_shape = nh.advertise<visualization_msgs::MarkerArray>("Shape", 1);
     pub_origin = nh.advertise<visualization_msgs::Marker> ("Origin", 1);
     pub_object = nh.advertise<sk_msgs::ObjectArray> ("objects",1);
+    pub_object_marker = nh.advertise<visualization_msgs::MarkerArray>("object_marker",1);
 
     ydlidar_sub = nh.subscribe<sensor_msgs::LaserScan>("/scan", 1, &lidar_detector::ydlidar_callback, this);
 
@@ -44,7 +45,7 @@ void lidar_detector::ydlidar_callback(const sensor_msgs::LaserScan::ConstPtr& sc
     projector.projectLaser(*scan_in, cloud);
 
     // Publish the new point cloud.
-    cloud.header.frame_id = "/laser_frame";
+    cloud.header.frame_id = "/fcu";
     cloud.header.stamp = scan_in->header.stamp;
     pcl_from_scan.publish(cloud);
 
@@ -146,7 +147,7 @@ void lidar_detector::generateColor(size_t indexNumber)
 void lidar_detector::displayShape (const std::vector<clusterPtr> pVecClusters)
 {
     // origin
-    m_Origin.header.frame_id = "/laser_frame";
+    m_Origin.header.frame_id = "/fcu";
     m_Origin.header.stamp = ros::Time::now();
 
     m_Origin.ns = "/origin";
@@ -191,7 +192,7 @@ void lidar_detector::displayShape (const std::vector<clusterPtr> pVecClusters)
     m_arrShapes.markers.clear();
     m_arrObjects.objects.clear();
 
-    m_arrObjects.frame_id = "/laser_frame";
+    m_arrObjects.frame_id = "/fcu";
 
     uint32_t objectNumber = 0;
     for (auto pCluster : pVecClusters)
@@ -200,7 +201,7 @@ void lidar_detector::displayShape (const std::vector<clusterPtr> pVecClusters)
         sk_msgs::Object object;
 
         shape.lifetime = ros::Duration(m_fMarkerDuration);
-        shape.header.frame_id = "/laser_frame";
+        shape.header.frame_id = "/fcu";
         //shape.color.b = (float)(*cluster_it)->m_b/255.0f;
         shape.color.r = 0.0;
         shape.color.g = 1.0;
@@ -217,6 +218,7 @@ void lidar_detector::displayShape (const std::vector<clusterPtr> pVecClusters)
         {
             shape.id = objectNumber;
             object.id = objectNumber;
+            object.frame_id = "/fcu";
 
             for (auto const &point: pCluster->m_polygon.polygon.points)
             {
@@ -229,7 +231,14 @@ void lidar_detector::displayShape (const std::vector<clusterPtr> pVecClusters)
 
             m_arrShapes.markers.push_back(shape);
 
-            object.pose.position = pCluster->m_center.position;
+            // original
+            // object.pose.position = pCluster->m_center.position;
+
+            // tmp
+            object.pose.position.x = pCluster->m_center.position.y;
+            object.pose.position.y = -pCluster->m_center.position.x;
+            object.pose.position.x -= 0.02*k;
+            object.pose.position.y -= 0.02*k;
             m_arrObjects.objects.push_back(object);
 
 //            shape.scale.x = 0.0;
@@ -249,14 +258,49 @@ void lidar_detector::displayShape (const std::vector<clusterPtr> pVecClusters)
         }
         objectNumber++;
     }
+    k++;
+
+    visualization_msgs::Marker object_marker;
+
+    object_marker.header.frame_id = "/fcu";
+    object_marker.header.stamp = ros::Time::now();
+
+    object_marker.id = 0;
+    object_marker.type = visualization_msgs::Marker::SPHERE;
+    object_marker.action = visualization_msgs::Marker::ADD;
+    object_marker.pose.position.x = 0;
+    object_marker.pose.position.y = 0;
+    object_marker.pose.position.z = 0;
+    object_marker.pose.orientation.x = 0.0;
+    object_marker.pose.orientation.y = 0.0;
+    object_marker.pose.orientation.z = 0.0;
+    object_marker.pose.orientation.w = 1.0;
+
+    object_marker.scale.x = 0.5;
+    object_marker.scale.y = 0.5;
+    object_marker.scale.z = 0.5;
+
+    object_marker.color.r = 0.0f;
+    object_marker.color.g = 1.0f;
+    object_marker.color.b = 1.0f;
+    object_marker.color.a = 1.0;
+    object_marker.lifetime = ros::Duration();
+
+    m_arrObjects_marker.markers.clear();
+    for (auto object : m_arrObjects.objects) {
+        object_marker.pose = object.pose;
+        m_arrObjects_marker.markers.push_back(object_marker);
+        object_marker.id += 1;
+    }
+
 }
 
 
 void lidar_detector::publish ()
 {
-
     pub_shape.publish (m_arrShapes);
     pub_origin.publish(m_Origin);
     pub_object.publish(m_arrObjects);
+    pub_object_marker.publish(m_arrObjects_marker);
 }
 
